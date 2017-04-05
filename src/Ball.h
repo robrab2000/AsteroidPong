@@ -38,6 +38,7 @@ public:
     bool paddleBallSet;
     
     
+    
     Ball();
     
     ScoreManager* scoreManager;

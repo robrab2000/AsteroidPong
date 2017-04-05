@@ -4,7 +4,12 @@
 #include "Ball.h"
 #include "Paddle.h"
 #include "ScoreManager.h"
+#include "ofxOsc.h"
 
+
+// listen on port 80000
+#define PORT 80000
+#define NUM_MSG_STRINGS 20
 class ofApp : public ofBaseApp{
 
 	public:
@@ -23,6 +28,12 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+    
+    void checkOSC();
+    
+    ofxOscReceiver receiver;
+    deque<string> messageBuffer;
+    int maxBufferSize=20;
     
     void drawNet();
 		

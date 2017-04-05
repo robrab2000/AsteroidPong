@@ -8,6 +8,9 @@ void ofApp::setup(){
     player2.setup(2, ofColor(255));
     ball.setup(&scoreManager, &player1, &player2);
     ofSetBackgroundAuto(true);
+    // listen on the given port
+    cout << "listening for osc messages on port " << PORT << "\n";
+    receiver.setup(PORT);
 }
 
 //--------------------------------------------------------------
@@ -15,6 +18,7 @@ void ofApp::update(){
     ball.update();
     player1.update();
     player2.update();
+    checkOSC();
 }
 
 //--------------------------------------------------------------
@@ -102,5 +106,22 @@ void ofApp::drawNet(){
         ofTranslate((ofGetWidth() * 0.5) - (netWidth * 0.5), i * ofGetHeight() / (float)netPieces);
         ofDrawRectangle(0, 0, netWidth, ofGetHeight() / (float)netPieces / 2);
         ofPopMatrix();
+    }
+}
+
+//--------------------------------------------------------------
+void ofApp::checkOSC() {
+    if (messageBuffer.size()>maxBufferSize) messageBuffer.pop_back();
+    
+    // check for waiting messages
+    while (receiver.hasWaitingMessages()) {
+        // get the next message
+        ofxOscMessage m;
+        receiver.getNextMessage(m);
+        
+        if (m.getAddress() == "/3/xyM_r") {
+            cout << "test";
+            //cout << "val = " << m.getArgAsInt(1);
+        }
     }
 }
