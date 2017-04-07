@@ -36,8 +36,9 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
 void Ball::update(){
     
 
-    speedX += ofSignedNoise(noise) * 0.5;
-    noise += 0.01;
+//    speedX += ofSignedNoise(noise) * 0.5;
+//    noise += 0.01;
+    
     if(x < 0 ){
         x = 0 + dim;
         // increment player 1 score

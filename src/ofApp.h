@@ -8,8 +8,9 @@
 #include "ai.h"
 
 
-// listen on port 80000
+// listen on port 12345
 #define RECEIVER_PORT 12345
+// send on port 54321
 #define SENDER_PORT 54321
 #define SENDER_IP "localhost" //"192.168.1.6"
 #define NUM_MSG_STRINGS 20
