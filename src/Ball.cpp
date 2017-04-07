@@ -24,7 +24,7 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
     
     dim = 5;
     
-    ttt= 1;
+    noise= 1;
     
     color.set(255, 255, 255);
     
@@ -36,8 +36,8 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
 void Ball::update(){
     
 
-    speedX += ofSignedNoise(ttt) * 0.5;
-    ttt += 0.01;
+    speedX += ofSignedNoise(noise) * 0.5;
+    noise += 0.01;
     if(x < 0 ){
         x = 0 + dim;
         // increment player 1 score
@@ -114,7 +114,7 @@ void Ball::checkForPaddle() {
 void Ball::holdPaddleBall() {
     if (ballPaddle == player1) {
     x = ballPaddle->posX - dim * 1.5;
-    y = ballPaddle->posY;
+    y = ballPaddle->posY + (ballPaddle->sizeY * 0.5);
     }    else {
         x = ballPaddle->posX + dim * 1.5;
         y = ballPaddle->posY;

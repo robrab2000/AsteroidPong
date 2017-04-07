@@ -9,13 +9,19 @@ void ofApp::setup(){
     ball.setup(&scoreManager, &player1, &player2);
     ofSetBackgroundAuto(true);
     // listen on the given port
-    cout << "listening for osc messages on port " << PORT << "\n";
-    receiver.setup(PORT);
+    cout << "listening for osc messages on port " << RECEIVER_PORT << "\n";
+    receiver.setup(RECEIVER_PORT);
+    
+    // send on the given port
+    cout << "listening for osc messages on port " << SENDER_PORT << " and ip " << SENDER_IP << "\n";
+    sender.setup(SENDER_IP, RECEIVER_PORT);
+    aiPlayer.setup(&scoreManager, &player2, &ball, &sender);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     ball.update();
+    aiPlayer.update();
     player1.update();
     player2.update();
     checkOSC();

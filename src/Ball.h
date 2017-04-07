@@ -31,7 +31,7 @@ public:
     float y;
     float speedY;
     float speedX;
-    float ttt;
+    float noise;
     float paddlePos;
     int dim;
     ofColor color;

@@ -5,10 +5,13 @@
 #include "Paddle.h"
 #include "ScoreManager.h"
 #include "ofxOsc.h"
+#include "ai.h"
 
 
 // listen on port 80000
-#define PORT 12345
+#define RECEIVER_PORT 12345
+#define SENDER_PORT 54321
+#define SENDER_IP "localhost" //"192.168.1.6"
 #define NUM_MSG_STRINGS 20
 class ofApp : public ofBaseApp{
 
@@ -32,6 +35,7 @@ class ofApp : public ofBaseApp{
     void checkOSC();
     
     ofxOscReceiver receiver;
+    ofxOscSender sender;
     deque<string> messageBuffer;
     int maxBufferSize=20;
     
@@ -40,4 +44,5 @@ class ofApp : public ofBaseApp{
     Ball ball;
     ScoreManager scoreManager;
     Paddle player1, player2;
+    ai aiPlayer;
 };

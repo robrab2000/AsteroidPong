@@ -78,5 +78,5 @@ void Paddle::checkBounds() {
 }
 
 void Paddle::takeInput(float newInput) {
-    posY = ofMap(newInput, 0, 1, ofGetHeight() - sizeY, 0);
+    posY = ofMap(ofClamp(newInput, 0.3, 0.7), 0.3, 0.7, ofGetHeight() - sizeY, 0);
 }
