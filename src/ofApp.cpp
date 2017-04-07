@@ -118,10 +118,15 @@ void ofApp::checkOSC() {
         // get the next message
         ofxOscMessage m;
         receiver.getNextMessage(m);
+//       ofLog(OF_LOG_NOTICE, ofToString(m.getArgAsFloat(0)));
         
-        if (m.getAddress() == "/3/xyM_r") {
-            cout << "test";
-            //cout << "val = " << m.getArgAsInt(1);
+        if (m.getAddress() == "/1/fader7") {
+//          cout << "val = " << m.getArgAsFloat(0);
+            player1.takeInput(m.getArgAsFloat(0));
+        }
+        if (m.getAddress() == "/1/fader8") {
+            //          cout << "val = " << m.getArgAsFloat(0);
+            player2.takeInput(m.getArgAsFloat(0));
         }
     }
 }

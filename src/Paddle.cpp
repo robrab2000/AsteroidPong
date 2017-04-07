@@ -16,8 +16,8 @@ void Paddle::setup(int _playerNumber, ofColor _myColor) {
     sizeX = 20;
     sizeY = 100;
     
-    gravityForce = 0.05;
-    jumpForce = -12.5;
+//    gravityForce = 0.05;
+//    jumpForce = -12.5;
     
     velocityY = 0;
     terminalVelocity = 20;
@@ -35,7 +35,7 @@ void Paddle::setup(int _playerNumber, ofColor _myColor) {
 }
 
 void Paddle::update() {
-    calcGravity();
+//    calcGravity();
     calcPos();
     checkBounds();
 }
@@ -54,8 +54,8 @@ void Paddle::calcGravity() {
 }
 
 void Paddle::jump() {
-    accelerationY = 0;
-    velocityY = jumpForce;
+//    accelerationY = 0;
+//    velocityY = jumpForce;
 }
 
 void Paddle::calcPos() {
@@ -75,4 +75,8 @@ void Paddle::checkBounds() {
         accelerationY = 0;
         posY = 0;
     }
+}
+
+void Paddle::takeInput(float newInput) {
+    posY = ofMap(newInput, 0, 1, ofGetHeight() - sizeY, 0);
 }

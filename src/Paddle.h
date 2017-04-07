@@ -21,6 +21,7 @@ public:
     void jump();
     void calcPos();
     void checkBounds();
+    void takeInput(float);
     
     int playerNumber;
     int posX, posY;

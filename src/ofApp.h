@@ -8,7 +8,7 @@
 
 
 // listen on port 80000
-#define PORT 80000
+#define PORT 12345
 #define NUM_MSG_STRINGS 20
 class ofApp : public ofBaseApp{
 

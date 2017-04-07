@@ -22,7 +22,7 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
     speedX = startingX; //ofRandom(-5, 5);
     speedY = startingY; //ofRandom(-5, 5);
     
-    dim = 25;
+    dim = 5;
     
     ttt= 1;
     
