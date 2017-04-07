@@ -29,7 +29,18 @@ void ai::draw() {
 void ai::calcAction() {
     //    sendAction(ofNoise(noise) * (ball->y / ofGetHeight()));
     float offset = (1 - (ball->y / ofGetHeight()));
-    sendAction(ofNoise(noise));// * offset);
+//    ofLog(OF_LOG_NOTICE, ofToString(offset));
+    float window = 0.5 * ofGetHeight();
+    float windowStart = (ofGetHeight() - (ball->y - (window * 0.5))) / ofGetHeight();
+    float windowEnd = (ofGetHeight() - (ball->y + (window * 0.5))) / ofGetHeight();
+    
+    float action = ofMap(ofNoise(noise), 0, 1, windowStart, windowEnd);
+    
+    ofLog(OF_LOG_NOTICE, "window: " + ofToString(window));
+    ofLog(OF_LOG_NOTICE, "windowStart: " + ofToString(windowStart));
+    ofLog(OF_LOG_NOTICE, "windowEnd: " + ofToString(windowEnd));
+    ofLog(OF_LOG_NOTICE, "Action: " + ofToString(action));
+    sendAction(action);
     noise += 0.03;
 }
 
