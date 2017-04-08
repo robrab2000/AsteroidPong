@@ -41,7 +41,7 @@ void ai::calcAction() {
     
     // 'UnNormalize' the actionTarget value (see: http://bit.ly/2nVVfs4 for a bit of a chortle)
     actionTarget *= ofGetHeight();
-    // if the target position is greater than the player's current position then set the action' position as the player's current position increased by the step value and vice versa
+    // if the target position is greater than the player's current position then set the action target position as the player's current position increased by the step value and vice versa
     if (actionTarget > playerY) {
         action = playerY + (maxStepSize);// * ofNoise(noise));
     }
