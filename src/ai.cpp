@@ -15,6 +15,7 @@ void ai::setup(ScoreManager* _scoreManager, Paddle* _player2, Ball* _ball, ofxOs
     sender = _sender;
     
     noise = ofRandom(1);
+    maxStepSize = 5;
     
 }
 
@@ -27,25 +28,35 @@ void ai::draw() {
 }
 
 void ai::calcAction() {
-    //    sendAction(ofNoise(noise) * (ball->y / ofGetHeight()));
-    float offset = (1 - (ball->y / ofGetHeight()));
-//    ofLog(OF_LOG_NOTICE, ofToString(offset));
+    // Create a variable to hold the final action
+    float action = 0;
+    // Create a window around the ball within which the paddle will attempt to move around within
     float window = 0.75 * ofGetHeight();
     float windowStart = (ofGetHeight() - (ball->y - (window * 0.5))) / ofGetHeight();
     float windowEnd = (ofGetHeight() - (ball->y + (window * 0.5))) / ofGetHeight();
+    // Noise function gets mapped to the window and sets the action's target within window
+    float actionTarget = ofMap(ofNoise(noise), 0, 1, windowStart, windowEnd);
+    // Take note of the player's current position
+    float playerY = player2->posY;
     
-    float action = ofMap(ofNoise(noise), 0, 1, windowStart, windowEnd);
-    
-    ofLog(OF_LOG_NOTICE, "window: " + ofToString(window));
-    ofLog(OF_LOG_NOTICE, "windowStart: " + ofToString(windowStart));
-    ofLog(OF_LOG_NOTICE, "windowEnd: " + ofToString(windowEnd));
-    ofLog(OF_LOG_NOTICE, "Action: " + ofToString(action));
+    // 'UnNormalize' the actionTarget value (see: http://bit.ly/2nVVfs4 for a bit of a chortle)
+    actionTarget *= ofGetHeight();
+    // if the target position is greater than the player's current position then set the action' position as the player's current position increased by the step value and vice versa
+    if (action > playerY) {
+        action = playerY + (maxStepSize);// * ofNoise(noise));
+    }
+    else if (action < playerY) {
+        action = playerY - (maxStepSize);// * ofNoise(noise));
+    }
+    // Normalize action value again
+    action /= ofGetHeight();
+    // Send the action to the action sender
     sendAction(action);
+    // Increment the noise value
     noise += 0.03;
 }
 
 void ai::sendAction(float action) {
-//    ofLog(OF_LOG_NOTICE, "test");
     if (player2 != NULL) {
         player2->takeInput(action);
         sendOscMessage(action);
@@ -53,7 +64,6 @@ void ai::sendAction(float action) {
 }
 
 void ai::sendOscMessage(float action) {
-//    ofLog(OF_LOG_NOTICE, "test");
     ofxOscMessage m;
     m.setAddress( "/1/fader8" );
     m.addFloatArg( action );

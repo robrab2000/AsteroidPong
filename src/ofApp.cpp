@@ -16,6 +16,8 @@ void ofApp::setup(){
     cout << "listening for osc messages on port " << SENDER_PORT << " and ip " << SENDER_IP << "\n";
     sender.setup(SENDER_IP, RECEIVER_PORT);
     aiPlayer.setup(&scoreManager, &player2, &ball, &sender);
+    
+    ofSetFrameRate(1);
 }
 
 //--------------------------------------------------------------
