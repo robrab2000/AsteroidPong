@@ -11,7 +11,7 @@
 // listen on port 12345
 #define RECEIVER_PORT 12345
 // send on port 54321
-#define SENDER_PORT 54321
+#define SENDER_PORT 9999
 #define SENDER_IP "192.168.2.55"
 #define NUM_MSG_STRINGS 20
 class ofApp : public ofBaseApp{
@@ -34,6 +34,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
     void checkOSC();
+    void startGame();
     
     ofxOscReceiver receiver;
     ofxOscSender sender;

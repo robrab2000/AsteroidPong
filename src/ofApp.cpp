@@ -15,7 +15,7 @@ void ofApp::setup(){
     
     // send on the given port
     cout << "sending osc messages on port " << SENDER_PORT << " and ip " << SENDER_IP << "\n";
-    sender.setup(SENDER_IP, RECEIVER_PORT);
+    sender.setup(SENDER_IP, SENDER_PORT);
     aiPlayer.setup(&scoreManager, &player2, &ball, &sender);
     
     ofSetFrameRate(60);
@@ -41,7 +41,9 @@ void ofApp::draw(){
 
     ball.draw();
     
-    scoreManager.draw();
+    if (gameStarted) {
+        scoreManager.draw();
+    }
     
     player1.draw();
     
@@ -144,4 +146,8 @@ void ofApp::checkOSC() {
             }
         }
     }
+}
+//--------------------------------------------------------------
+void ofApp::startGame() {
+    gameStarted = true;
 }

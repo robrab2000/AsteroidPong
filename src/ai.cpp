@@ -42,16 +42,17 @@ void ai::calcAction() {
     // Noise function gets mapped to the window and sets the action's target within window
     float actionTarget = ofMap(ofNoise(noise), 0, 1, windowStart, windowEnd);
     // if the target position is greater than the player's current position then set the action target position as the player's current position increased by the step value and vice versa
-    if (actionTarget > playerY) {
-        action = playerY + (maxStepSize);// * ofNoise(noise));
-    }
-    else if (actionTarget < playerY) {
-        action = playerY - (maxStepSize);// * ofNoise(noise));
-    }
+    action = playerY + (actionTarget - playerY)*0.001;
+//    if (actionTarget > playerY) {
+//        action = playerY; // + 0.001*(maxStepSize);// * ofNoise(noise));
+//    }
+//    else if (actionTarget < playerY) {
+//        action = playerY; // - 0.001*(maxStepSize);// * ofNoise(noise));
+//    }
     // Normalize action value again
-    actionTarget /= winHeight;                      // TEMP, SHOULD BE ACTION
+    action /= winHeight;                      // TEMP, SHOULD BE ACTION
     // Send the action to the action sender
-    sendAction(actionTarget);                       // TEMP, SHOULD BE ACTION
+    sendAction(action);                       // TEMP, SHOULD BE ACTION
     // Increment the noise value
     noise += 0.03;
 }
@@ -65,7 +66,9 @@ void ai::sendAction(float action) {
 
 void ai::sendOscMessage(float action) {
     ofxOscMessage m;
+    
     m.setAddress( "/1/fader8" );
-    m.addFloatArg( action );
+
+    m.addFloatArg(  action );
     sender->sendMessage( m );
 }
