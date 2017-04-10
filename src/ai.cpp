@@ -41,9 +41,6 @@ void ai::calcAction() {
     float windowEnd = winHeight - (ballY + (window * 0.5));
     // Noise function gets mapped to the window and sets the action's target within window
     float actionTarget = ofMap(ofNoise(noise), 0, 1, windowStart, windowEnd);
-    
-    // 'UnNormalize' the actionTarget value (see: http://bit.ly/2nVVfs4 for a bit of a chortle)
-    //actionTarget *= winHeight;
     // if the target position is greater than the player's current position then set the action target position as the player's current position increased by the step value and vice versa
     if (actionTarget > playerY) {
         action = playerY + (maxStepSize);// * ofNoise(noise));

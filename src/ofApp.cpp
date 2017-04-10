@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    gameStarted = false;
     scoreManager.setup();
     ofBackground(0, 0, 0);
     player1.setup(1, ofColor(255));
@@ -13,7 +14,7 @@ void ofApp::setup(){
     receiver.setup(RECEIVER_PORT);
     
     // send on the given port
-    cout << "listening for osc messages on port " << SENDER_PORT << " and ip " << SENDER_IP << "\n";
+    cout << "sending osc messages on port " << SENDER_PORT << " and ip " << SENDER_IP << "\n";
     sender.setup(SENDER_IP, RECEIVER_PORT);
     aiPlayer.setup(&scoreManager, &player2, &ball, &sender);
     
@@ -22,11 +23,15 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    ball.update();
-    aiPlayer.update();
-    player1.update();
-    player2.update();
-    checkOSC();
+    if (gameStarted) {
+        ball.update();
+        if (!twoPlayers) {
+            aiPlayer.update();
+        }
+        player1.update();
+        player2.update();
+        checkOSC();
+    }
 }
 
 //--------------------------------------------------------------
@@ -46,11 +51,13 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     if (key == '1') {
-        player1.jump();
+        twoPlayers = false;
+        gameStarted = true;
     }
     
     if (key == '2') {
-        player2.jump();
+        twoPlayers = true;
+        gameStarted = true;
     }
     if (key == '3') {
         ball.releasePaddle();
@@ -129,12 +136,12 @@ void ofApp::checkOSC() {
 //       ofLog(OF_LOG_NOTICE, ofToString(m.getArgAsFloat(0)));
         
         if (m.getAddress() == "/1/fader7") {
-//          cout << "val = " << m.getArgAsFloat(0);
             player1.takeInput(m.getArgAsFloat(0));
         }
         if (m.getAddress() == "/1/fader8") {
-            //          cout << "val = " << m.getArgAsFloat(0);
-            player2.takeInput(m.getArgAsFloat(0));
+            if(twoPlayers) {
+                player2.takeInput(m.getArgAsFloat(0));
+            }
         }
     }
 }

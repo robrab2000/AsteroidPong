@@ -39,6 +39,8 @@ class ofApp : public ofBaseApp{
     ofxOscSender sender;
     deque<string> messageBuffer;
     int maxBufferSize=20;
+    bool gameStarted;
+    bool twoPlayers;
     
     void drawNet();
 		
