@@ -15,8 +15,8 @@ void ai::setup(ScoreManager* _scoreManager, Paddle* _player2, Ball* _ball, ofxOs
     sender = _sender;
     
     noise = ofRandom(1);
-    maxStepSize = 5;
-    
+    maxStepSize = 0.5;
+    winHeight = ofGetHeight();
 }
 
 void ai::update() {
@@ -30,17 +30,20 @@ void ai::draw() {
 void ai::calcAction() {
     // Create a variable to hold the final action
     float action = 0;
-    // Create a window around the ball within which the paddle will attempt to move around within
-    float window = 0.75 * ofGetHeight();
-    float windowStart = (ofGetHeight() - (ball->y - (window * 0.5))) / ofGetHeight();
-    float windowEnd = (ofGetHeight() - (ball->y + (window * 0.5))) / ofGetHeight();
-    // Noise function gets mapped to the window and sets the action's target within window
-    float actionTarget = ofMap(ofNoise(noise), 0, 1, windowStart, windowEnd);
+    // Take note of the ball's Y position
+    float ballY = ball->y;
     // Take note of the player's current position
     float playerY = player2->posY;
     
+    // Create a window around the ball within which the paddle will attempt to move around within
+    float window = 0.75 * winHeight;
+    float windowStart = winHeight - (ballY - (window * 0.5));
+    float windowEnd = winHeight - (ballY + (window * 0.5));
+    // Noise function gets mapped to the window and sets the action's target within window
+    float actionTarget = ofMap(ofNoise(noise), 0, 1, windowStart, windowEnd);
+    
     // 'UnNormalize' the actionTarget value (see: http://bit.ly/2nVVfs4 for a bit of a chortle)
-    actionTarget *= ofGetHeight();
+    //actionTarget *= winHeight;
     // if the target position is greater than the player's current position then set the action target position as the player's current position increased by the step value and vice versa
     if (actionTarget > playerY) {
         action = playerY + (maxStepSize);// * ofNoise(noise));
@@ -49,9 +52,9 @@ void ai::calcAction() {
         action = playerY - (maxStepSize);// * ofNoise(noise));
     }
     // Normalize action value again
-    action /= ofGetHeight();
+    actionTarget /= winHeight;                      // TEMP, SHOULD BE ACTION
     // Send the action to the action sender
-    sendAction(action);
+    sendAction(actionTarget);                       // TEMP, SHOULD BE ACTION
     // Increment the noise value
     noise += 0.03;
 }

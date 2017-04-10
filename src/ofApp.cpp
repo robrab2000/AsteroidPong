@@ -17,7 +17,7 @@ void ofApp::setup(){
     sender.setup(SENDER_IP, RECEIVER_PORT);
     aiPlayer.setup(&scoreManager, &player2, &ball, &sender);
     
-    ofSetFrameRate(1);
+    ofSetFrameRate(60);
 }
 
 //--------------------------------------------------------------

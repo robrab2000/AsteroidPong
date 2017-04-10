@@ -29,6 +29,7 @@ public:
     
     float noise;
     float maxStepSize;
+    float winHeight;
     
     ScoreManager* scoreManager;
     
