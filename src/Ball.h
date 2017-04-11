@@ -13,10 +13,11 @@
 #include "ofMain.h"
 #include "ScoreManager.h"
 #include "Paddle.h"
+#include "ofxOsc.h"
 class Ball {
     
 public:
-    void setup(ScoreManager*, Paddle*, Paddle*);
+    void setup(ScoreManager*, Paddle*, Paddle*, ofxOscSender*);
     void update();
     void draw();
     void collideBall(); //float argument for
@@ -42,6 +43,7 @@ public:
     Ball();
     
     ScoreManager* scoreManager;
+    ofxOscSender* sender;
     
     Paddle* player1;
     Paddle* player2;

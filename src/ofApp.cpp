@@ -7,7 +7,7 @@ void ofApp::setup(){
     ofBackground(0, 0, 0);
     player1.setup(1, ofColor(255));
     player2.setup(2, ofColor(255));
-    ball.setup(&scoreManager, &player1, &player2);
+    ball.setup(&scoreManager, &player1, &player2, &sender);
     ofSetBackgroundAuto(true);
     // listen on the given port
     cout << "listening for osc messages on port " << RECEIVER_PORT << "\n";
@@ -17,6 +17,8 @@ void ofApp::setup(){
     cout << "sending osc messages on port " << SENDER_PORT << " and ip " << SENDER_IP << "\n";
     sender.setup(SENDER_IP, SENDER_PORT);
     aiPlayer.setup(&scoreManager, &player2, &ball, &sender);
+    gui.setup(&scoreManager, &sender);
+    gui.resetGui();
     
     ofSetFrameRate(60);
 }
@@ -156,6 +158,30 @@ void ofApp::checkOSC() {
             ball.releasePaddle();
         }
     }
+    
+    
+    if (gameStarted) {
+        // Create bundle variable
+        ofxOscBundle b;
+        
+        // Create message to update player 1 score
+        ofxOscMessage mSend1;
+        mSend1.setAddress( "/1/label3" );
+        string p1Score = "Score: " + ofToString(scoreManager.player1Score);
+        mSend1.addStringArg( p1Score );
+        b.addMessage( mSend1 );
+        
+        // Create message to update player 2 score
+        ofxOscMessage mSend2;
+        mSend2.setAddress( "/1/label2" );
+        string p2Score = "Score: " + ofToString(scoreManager.player2Score);
+        mSend2.addStringArg( p2Score );
+        b.addMessage( mSend2 );
+        
+        // Send bundle
+        sender.sendBundle( b );
+    }
+
 }
 //--------------------------------------------------------------
 void ofApp::startGame() {

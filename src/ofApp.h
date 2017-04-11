@@ -6,6 +6,7 @@
 #include "ScoreManager.h"
 #include "ofxOsc.h"
 #include "ai.h"
+#include "gui.h"
 
 
 // listen on port 12345
@@ -49,4 +50,5 @@ class ofApp : public ofBaseApp{
     ScoreManager scoreManager;
     Paddle player1, player2;
     ai aiPlayer;
+    gui gui;
 };

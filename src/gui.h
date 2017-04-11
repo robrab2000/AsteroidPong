@@ -10,15 +10,20 @@
 #define gui_h
 
 #include "ScoreManager.h"
+#include "ofxOsc.h"
 
 #include <stdio.h>
 
 class gui {
 public:
-    void setup(ScoreManager*);
+    void setup(ScoreManager*, ofxOscSender*);
     void update();
     void draw();
+    void resetGui();
     bool startGame();
+    
+    ScoreManager* scoreManager;
+    ofxOscSender* sender;
 };
 
 #endif /* gui_h */
