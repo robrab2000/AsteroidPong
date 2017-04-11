@@ -34,6 +34,7 @@ public:
     float speedX;
     float noise;
     float paddlePos;
+    float speedDampen;
     int dim;
     ofColor color;
     bool paddleBallSet;

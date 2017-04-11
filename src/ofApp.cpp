@@ -160,8 +160,12 @@ void ofApp::checkOSC() {
                 player2.takeInput(m.getArgAsFloat(0));
             }
         }
-        if (m.getAddress() == "/1/push1") {
-            ball.releasePaddle();
+        if (ball.ballPaddle != NULL) {
+            if (ball.ballPaddle->playerNumber == 1 && ball.paddleBallSet) {
+                if (m.getAddress() == "/1/push1") {
+                    ball.releasePaddle();
+                }
+            }
         }
     }
     

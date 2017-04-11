@@ -21,8 +21,8 @@ void ScoreManager::setup() {
 }
 
 void ScoreManager::draw() {
-    ofDrawBitmapString("player 1: " + ofToString(player1Score), posX, posY);
-    ofDrawBitmapString("player 2: " + ofToString(player2Score), posX, posY + 20);
+//    ofDrawBitmapString("player 1: " + ofToString(player1Score), posX, posY);
+//    ofDrawBitmapString("player 2: " + ofToString(player2Score), posX, posY + 20);
 }
 
 void ScoreManager::addScore(int playerNumber) {

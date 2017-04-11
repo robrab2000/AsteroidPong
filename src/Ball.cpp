@@ -19,8 +19,10 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
     startingX = 5;
     startingY = 5;
     
-    speedX = startingX; //ofRandom(-5, 5);
-    speedY = startingY; //ofRandom(-5, 5);
+    speedDampen = 0.99;
+    
+    speedX = startingX;
+    speedY = startingY;
     
     dim = 5;
     
@@ -36,6 +38,14 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
 }
 
 void Ball::update(){
+    if (abs(speedX) > startingX) {
+        speedX *= speedDampen;
+        ofLog(OF_LOG_NOTICE, "X: " + ofToString(abs(speedX)));
+    }
+    if (abs(speedY) > startingY) {
+        speedY *= speedDampen;
+        //ofLog(OF_LOG_NOTICE, "Y: " + ofToString(abs(speedY)));
+    }
     if(x < 0 - dim){
         // increment player 1 score
         scoreManager->addScore(1);
@@ -80,8 +90,12 @@ void Ball::checkForPaddle() {
     if(x > ofGetWidth() * 0.5) {
         if (ofDist(x, 0, player1->posX, 0) < speedX) {
             if ( y >= player1->posY && y <= player1->posY + player1->sizeY) {
+                // Ball switched directions on X axis
                 speedX *= -1;
+                // Ball takes on some of the paddle's momentum on the y axis
                 speedY += player1->velocityY * -0.5;
+                // Ball preserves some of the paddle's momentum on the x axis too
+                speedX + (player1->velocityY * 1);
             }
             
         }
@@ -89,8 +103,12 @@ void Ball::checkForPaddle() {
     if (x < ofGetWidth() * 0.5) {
         if (ofDist(x, 0, player2->posX + player2->sizeX, 0) < abs(speedX)) {
             if ( y >= player2->posY && y <= player2->posY + player2->sizeY) {
+                // Ball switched directions on X axis
                 speedX *= -1;
+                // Ball takes on some of the paddle's momentum on the y axis
                 speedY += player2->velocityY * -0.5;
+                // Ball preserves some of the paddles velocity on the x axis too
+                speedX - (player2->velocityY * 1);
             }
 
         }
@@ -118,11 +136,11 @@ void Ball::releasePaddle() {
     }
     if (ballPaddle == player1) {
         speedX = -startingX;
-        speedY = startingY + ofRandom(-2, 2);
+        speedY = startingY * ofRandom(-1, 1);
     }
     else {
         speedX = startingX;
-        speedY = startingY + ofRandom(-2, 2);
+        speedY = startingY * ofRandom(-1, 1);
     }
     // Tell the gui to stop showing the release button text
     gui->releaseBall();
