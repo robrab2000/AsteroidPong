@@ -46,16 +46,7 @@ void Paddle::draw() {
 }
 
 void Paddle::calcPos() {
-//    accelerationY = (targetY - posY ) * 0.01;
-//    velocityY += accelerationY;
-//    posY += ofClamp(velocityY, -terminalVelocity, terminalVelocity);
-//    if (abs(posY - targetY) <= 10) {
-//        velocityY *= 0.5;
-//        accelerationY *= 0.5;
-//    }
-
     posY = ofLerp(posY, targetY, ofGetLastFrameTime() * 10);
-    //SMOOTHSTEP(posY);
 }
 
 void Paddle::checkBounds() {

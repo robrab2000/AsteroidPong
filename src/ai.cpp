@@ -30,29 +30,16 @@ void ai::draw() {
 void ai::calcAction() {
     // Create a variable to hold the final action
     float action = 0;
-    // Take note of the ball's Y position
-    float ballY = ball->y;
-    // Take note of the player's current position
-    float playerY = player2->posY;
-    
-    // Create a window around the ball within which the paddle will attempt to move around within
-    float window = 0.75 * winHeight;
-    float windowStart = winHeight - (ballY - (window * 0.5));
-    float windowEnd = winHeight - (ballY + (window * 0.5));
+    // Create a range around the ball within which the paddle will move around within
+    float rangeSize = 0.75 * winHeight;
+    float rangeStart = winHeight - (ball->y - (rangeSize * 0.5));
+    float rangeEnd = winHeight - (ball->y + (rangeSize * 0.5));
     // Noise function gets mapped to the window and sets the action's target within window
-    float actionTarget = ofMap(ofNoise(noise), 0, 1, windowStart, windowEnd);
-    // if the target position is greater than the player's current position then set the action target position as the player's current position increased by the step value and vice versa
-    action = playerY + (actionTarget - playerY)*0.001;
-//    if (actionTarget > playerY) {
-//        action = playerY; // + 0.001*(maxStepSize);// * ofNoise(noise));
-//    }
-//    else if (actionTarget < playerY) {
-//        action = playerY; // - 0.001*(maxStepSize);// * ofNoise(noise));
-//    }
-    // Normalize action value again
-    actionTarget /= winHeight;                      // TEMP, SHOULD BE ACTION
+    action = ofMap(ofNoise(noise), 0, 1, rangeStart, rangeEnd);
+    // Normalize action value
+    action /= winHeight;
     // Send the action to the action sender
-    sendAction(actionTarget);                       // TEMP, SHOULD BE ACTION
+    sendAction(action);
     // Increment the noise value
     noise += 0.03;
 }
