@@ -21,7 +21,6 @@ public:
     void setup(ScoreManager*, Paddle*, Paddle*, gui*);
     void update();
     void draw();
-    void collideBall(); //float argument for
     void checkForPaddle();
     void holdPaddleBall();
     void releasePaddle();

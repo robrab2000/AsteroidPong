@@ -42,6 +42,12 @@ void ai::calcAction() {
     sendAction(action);
     // Increment the noise value
     noise += 0.03;
+    // If the ai is holding the ball then it will release the ball at random
+    if (ball->paddleBallSet && ball->x < 0.5 * ofGetWidth()) {
+        if (ofRandom(180) > 179){
+            ball->releasePaddle();
+        }
+    }
 }
 
 void ai::sendAction(float action) {

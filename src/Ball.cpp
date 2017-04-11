@@ -36,21 +36,19 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
 }
 
 void Ball::update(){
-    if(x < 0 ){
-        x = 0 + dim;
+    if(x < 0 - dim){
         // increment player 1 score
         scoreManager->addScore(1);
-        ballPaddle = player2;
         speedX = 0;
         speedY= 0;
+        ballPaddle = player2;
         paddleBallSet = true;
-    } else if(x > ofGetWidth()){
-        x = ofGetWidth() - dim;
+    } else if(x > ofGetWidth() + dim){
         // increment player 2 score
         scoreManager->addScore(2);
-        ballPaddle = player1;
         speedX = 0;
         speedY= 0;
+        ballPaddle = player1;
         paddleBallSet = true;
     }
     
@@ -77,17 +75,12 @@ void Ball::draw(){
     //ofDrawRectangle(x, y, dim, dim);
 }
 
-// Method to collide the ball // This isn't in use
-void Ball::collideBall() {
-    speedX *= -1;
-    speedY *= -1;
-}
-
 // Method to check for collision with the paddle
 void Ball::checkForPaddle() {
     if(x > ofGetWidth() * 0.5) {
-        if (x >= player1->posX) {
+        if (ofDist(x, 0, player1->posX, 0) < speedX) {//x >= player1->posX && x < player1->sizeX) {
             if ( y >= player1->posY && y <= player1->posY + player1->sizeY) {
+                //x = player1->posX - dim * 1.5;
                 speedX *= -1;
                 speedY += player1->velocityY * 0.5;
             }
@@ -95,8 +88,9 @@ void Ball::checkForPaddle() {
         }
     }
     if (x < ofGetWidth() * 0.5) {
-        if (x <= player2->posX + player2->sizeX) {
+        if (ofDist(x, 0, player2->posX + player2->sizeX, 0) < abs(speedX)) {//x <= player2->posX + player2->sizeX && x > player2->posX) {
             if ( y >= player2->posY && y <= player2->posY + player2->sizeY) {
+                //x = player2->posX + player2->sizeX + dim * 1.5;
                 speedX *= -1;
                 speedY += player2->velocityY * 0.5;
             }
