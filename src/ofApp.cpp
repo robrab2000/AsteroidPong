@@ -129,6 +129,12 @@ void ofApp::drawNet(){
 }
 
 //--------------------------------------------------------------
+void ofApp::exit() {
+    // Resets the gui upon exiting the game
+    gui.resetGui();
+}
+
+//--------------------------------------------------------------
 void ofApp::checkOSC() {
     if (messageBuffer.size()>maxBufferSize) messageBuffer.pop_back();
     

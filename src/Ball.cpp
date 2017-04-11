@@ -78,9 +78,8 @@ void Ball::draw(){
 // Method to check for collision with the paddle
 void Ball::checkForPaddle() {
     if(x > ofGetWidth() * 0.5) {
-        if (ofDist(x, 0, player1->posX, 0) < speedX) {//x >= player1->posX && x < player1->sizeX) {
+        if (ofDist(x, 0, player1->posX, 0) < speedX) {
             if ( y >= player1->posY && y <= player1->posY + player1->sizeY) {
-                //x = player1->posX - dim * 1.5;
                 speedX *= -1;
                 speedY += player1->velocityY * 0.5;
             }
@@ -88,9 +87,8 @@ void Ball::checkForPaddle() {
         }
     }
     if (x < ofGetWidth() * 0.5) {
-        if (ofDist(x, 0, player2->posX + player2->sizeX, 0) < abs(speedX)) {//x <= player2->posX + player2->sizeX && x > player2->posX) {
+        if (ofDist(x, 0, player2->posX + player2->sizeX, 0) < abs(speedX)) {
             if ( y >= player2->posY && y <= player2->posY + player2->sizeY) {
-                //x = player2->posX + player2->sizeX + dim * 1.5;
                 speedX *= -1;
                 speedY += player2->velocityY * 0.5;
             }
