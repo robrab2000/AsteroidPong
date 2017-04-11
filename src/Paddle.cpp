@@ -7,7 +7,6 @@
 //
 
 #include "Paddle.h"
-#define SMOOTHSTEP(x) ((x) * (x) * (3 - 2 * (x)))
 
 Paddle::Paddle() {
 }
@@ -40,8 +39,8 @@ void Paddle::update() {
 
 void Paddle::draw() {
     ofPushMatrix();
-    ofSetColor(myColor);
-    ofDrawRectangle(posX, posY, sizeX, sizeY);
+        ofSetColor(myColor);
+        ofDrawRectangle(posX, posY, sizeX, sizeY);
     ofPopMatrix();
 }
 

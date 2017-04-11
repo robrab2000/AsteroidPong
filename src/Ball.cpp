@@ -36,11 +36,6 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
 }
 
 void Ball::update(){
-    
-
-//    speedX += ofSignedNoise(noise) * 0.5;
-//    noise += 0.01;
-    
     if(x < 0 ){
         x = 0 + dim;
         // increment player 1 score
@@ -77,12 +72,9 @@ void Ball::update(){
 }
 
 void Ball::draw(){
-    
-    //scoreManager.draw();
-    //dim = newDim;
     ofSetColor(color);
-    //ofDrawCircle(x, y, dim);
-    ofDrawRectangle(x, y, dim, dim);
+    ofDrawCircle(x, y, dim);
+    //ofDrawRectangle(x, y, dim, dim);
 }
 
 // Method to collide the ball // This isn't in use
@@ -116,11 +108,12 @@ void Ball::checkForPaddle() {
 // Method to hold ball on the paddle
 void Ball::holdPaddleBall() {
     if (ballPaddle == player1) {
-    x = ballPaddle->posX - dim * 1.5;
-    y = ballPaddle->posY + (ballPaddle->sizeY * 0.5);
-    }    else {
-        x = ballPaddle->posX + dim * 1.5;
-        y = ballPaddle->posY;
+        x = ballPaddle->posX - dim * 1.5;
+        y = ballPaddle->posY + (ballPaddle->sizeY * 0.5);
+    }
+    else {
+        x = ballPaddle->posX + ballPaddle->sizeX + dim * 1.5;
+        y = ballPaddle->posY + (ballPaddle->sizeY * 0.5);;
     }
     // Tell the gui to show the release button text
     gui->holdBall();

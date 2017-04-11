@@ -29,14 +29,9 @@ void ScoreManager::addScore(int playerNumber) {
     
     
     if (playerNumber == 1) {
-        
         player1Score++;
-        //cout<<player1Score<<endl;
-
-        //ofLog(OF_LOG_NOTICE, "player 1 score increment");
     }
     else if (playerNumber == 2) {
         player2Score++;
-        //ofLog(OF_LOG_NOTICE, "player 2 score increment");
     }
 }
