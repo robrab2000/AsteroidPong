@@ -14,12 +14,12 @@
 #include "ScoreManager.h"
 #include "Paddle.h"
 #include "Ball.h"
-#include "ofxOsc.h"
+#include "gui.h"
 
 class ai {
     
 public:
-    void setup(ScoreManager*, Paddle*, Ball*, ofxOscSender*);
+    void setup(ScoreManager*, Paddle*, Ball*, gui*);
     void update();
     void draw();
     void calcAction();
@@ -38,6 +38,8 @@ public:
     Ball* ball;
     
     ofxOscSender* sender;
+    
+    gui* gui;
 };
 
 

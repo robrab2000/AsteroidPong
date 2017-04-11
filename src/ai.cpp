@@ -8,11 +8,11 @@
 
 #include "ai.h"
 
-void ai::setup(ScoreManager* _scoreManager, Paddle* _player2, Ball* _ball, ofxOscSender* _sender) {
+void ai::setup(ScoreManager* _scoreManager, Paddle* _player2, Ball* _ball, class gui* _gui) {
     scoreManager = _scoreManager;
     player2 = _player2;
     ball = _ball;
-    sender = _sender;
+    gui = _gui;
     
     noise = ofRandom(1);
     maxStepSize = 0.5;
@@ -60,15 +60,6 @@ void ai::calcAction() {
 void ai::sendAction(float action) {
     if (player2 != NULL) {
         player2->takeInput(action);
-        sendOscMessage(action);
+        gui->player2SliderPos(action);
     }
-}
-
-void ai::sendOscMessage(float action) {
-    ofxOscMessage m;
-    
-    m.setAddress( "/1/fader8" );
-
-    m.addFloatArg(  action );
-    sender->sendMessage( m );
 }

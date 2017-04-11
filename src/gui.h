@@ -20,7 +20,14 @@ public:
     void update();
     void draw();
     void resetGui();
+    void holdBall();
+    void releaseBall();
+    void player1SliderPos(float);
+    void player2SliderPos(float);
+    
+    
     bool startGame();
+    
     
     ScoreManager* scoreManager;
     ofxOscSender* sender;

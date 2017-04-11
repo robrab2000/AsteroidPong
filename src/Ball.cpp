@@ -12,7 +12,7 @@
 Ball::Ball(){
 }
 
-void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2, ofxOscSender* _sender){
+void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2, class gui* _gui){
     x = ofRandom(0, ofGetWidth());
     y = ofRandom(0, ofGetHeight());
     
@@ -32,7 +32,7 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
     player1 = _player1;
     player2 = _player2;
     
-    sender = _sender;
+    gui = _gui;
 }
 
 void Ball::update(){
@@ -122,12 +122,8 @@ void Ball::holdPaddleBall() {
         x = ballPaddle->posX + dim * 1.5;
         y = ballPaddle->posY;
     }
-    ofxOscMessage m;
-    
-    m.setAddress( "/1/Release" );
-    
-    m.addStringArg(  "Release!" );
-    sender->sendMessage( m );
+    // Tell the gui to show the release button text
+    gui->holdBall();
 }
 
 // Method to release the ball from the paddle
@@ -143,4 +139,6 @@ void Ball::releasePaddle() {
         speedX = startingX;
         speedY = startingY + ofRandom(-2, 2);
     }
+    // Tell the gui to stop showing the release button text
+    gui->releaseBall();
 }
