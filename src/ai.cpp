@@ -50,9 +50,9 @@ void ai::calcAction() {
 //        action = playerY; // - 0.001*(maxStepSize);// * ofNoise(noise));
 //    }
     // Normalize action value again
-    action /= winHeight;                      // TEMP, SHOULD BE ACTION
+    actionTarget /= winHeight;                      // TEMP, SHOULD BE ACTION
     // Send the action to the action sender
-    sendAction(action);                       // TEMP, SHOULD BE ACTION
+    sendAction(actionTarget);                       // TEMP, SHOULD BE ACTION
     // Increment the noise value
     noise += 0.03;
 }

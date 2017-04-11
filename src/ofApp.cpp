@@ -23,6 +23,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    checkOSC();
     if (gameStarted) {
         ball.update();
         if (!twoPlayers) {
@@ -30,7 +31,6 @@ void ofApp::update(){
         }
         player1.update();
         player2.update();
-        checkOSC();
     }
 }
 
@@ -135,15 +135,25 @@ void ofApp::checkOSC() {
         // get the next message
         ofxOscMessage m;
         receiver.getNextMessage(m);
-//       ofLog(OF_LOG_NOTICE, ofToString(m.getArgAsFloat(0)));
         
         if (m.getAddress() == "/1/fader7") {
             player1.takeInput(m.getArgAsFloat(0));
+            if (!gameStarted) {
+                twoPlayers = false;
+                gameStarted = true;
+            }
         }
         if (m.getAddress() == "/1/fader8") {
+            if(!gameStarted){
+                twoPlayers = true;
+                gameStarted = true;
+            }
             if(twoPlayers) {
                 player2.takeInput(m.getArgAsFloat(0));
             }
+        }
+        if (m.getAddress() == "/1/push1") {
+            ball.releasePaddle();
         }
     }
 }
