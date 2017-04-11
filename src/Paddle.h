@@ -17,8 +17,6 @@ public:
     void setup(int, ofColor);
     void update();
     void draw();
-    void calcGravity();
-    void jump();
     void calcPos();
     void checkBounds();
     void takeInput(float);
@@ -27,8 +25,8 @@ public:
     int posX, posY;
     int sizeX, sizeY;
     
-    float gravityForce, jumpForce, terminalVelocity;
-    float velocityY, accelerationY;
+    float terminalVelocity;
+    float velocityY, accelerationY, targetY;
     
     ofColor myColor;
     

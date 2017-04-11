@@ -7,6 +7,7 @@
 //
 
 #include "Paddle.h"
+#define SMOOTHSTEP(x) ((x) * (x) * (3 - 2 * (x)))
 
 Paddle::Paddle() {
 }
@@ -15,9 +16,6 @@ void Paddle::setup(int _playerNumber, ofColor _myColor) {
     
     sizeX = 20;
     sizeY = 100;
-    
-//    gravityForce = 0.05;
-//    jumpForce = -12.5;
     
     velocityY = 0;
     terminalVelocity = 20;
@@ -47,21 +45,17 @@ void Paddle::draw() {
     ofPopMatrix();
 }
 
-void Paddle::calcGravity() {
-    if (posY < ofGetHeight() - sizeY) {
-        accelerationY += gravityForce;
-    }
-}
-
-void Paddle::jump() {
-//    accelerationY = 0;
-//    velocityY = jumpForce;
-}
-
 void Paddle::calcPos() {
-    velocityY += accelerationY;
-    posY += ofClamp(velocityY, -terminalVelocity, terminalVelocity);
-    
+//    accelerationY = (targetY - posY ) * 0.01;
+//    velocityY += accelerationY;
+//    posY += ofClamp(velocityY, -terminalVelocity, terminalVelocity);
+//    if (abs(posY - targetY) <= 10) {
+//        velocityY *= 0.5;
+//        accelerationY *= 0.5;
+//    }
+
+    posY = ofLerp(posY, targetY, ofGetLastFrameTime() * 10);
+    //SMOOTHSTEP(posY);
 }
 
 void Paddle::checkBounds() {
@@ -78,5 +72,5 @@ void Paddle::checkBounds() {
 }
 
 void Paddle::takeInput(float newInput) {
-    posY = ofMap(ofClamp(newInput, 0.1, 0.9), 0.1, 0.9, ofGetHeight() - sizeY, 0);
+    targetY = ofMap(ofClamp(newInput, 0.1, 0.9), 0.1, 0.9, ofGetHeight() - sizeY, 0);
 }
