@@ -32,6 +32,8 @@ public:
     
     Paddle();
     
+    float posYLast;
+    
 };
 
 

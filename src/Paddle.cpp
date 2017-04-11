@@ -45,7 +45,10 @@ void Paddle::draw() {
 }
 
 void Paddle::calcPos() {
+    posYLast = posY;
     posY = ofLerp(posY, targetY, ofGetLastFrameTime() * 10);
+    velocityY = posYLast -posY;
+//    ofLog(OF_LOG_NOTICE, "Player " + ofToString(playerNumber) + "velocity = " + ofToString(velocityY));
 }
 
 void Paddle::checkBounds() {

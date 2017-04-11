@@ -13,6 +13,7 @@
 		5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF49D76C45D5DB505A234880 /* ofxOscMessage.cpp */; };
 		62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 63A47AC60FFAFC3BF093EC0F /* OscOutboundPacketStream.cpp */; };
 		640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2FAC65C491D4231379F3298 /* ofxOscReceiver.cpp */; };
+		6505DE9E1E9D30B8001BE986 /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6505DE9C1E9D30B8001BE986 /* Background.cpp */; };
 		656C18C81E97CB7E0035CC97 /* ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 656C18C61E97CB7E0035CC97 /* ai.cpp */; };
 		65BBB42D1E9BD624000FD80B /* gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BBB42B1E9BD624000FD80B /* gui.cpp */; };
 		65D19E691E9543770043FAB5 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D19E631E9543770043FAB5 /* Ball.cpp */; };
@@ -70,6 +71,8 @@
 		48974F980F51769171D0B2F5 /* IpEndpointName.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = IpEndpointName.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/IpEndpointName.h; sourceTree = SOURCE_ROOT; };
 		4E95FB446A9C9C6F0DE12D75 /* OscPrintReceivedElements.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OscPrintReceivedElements.h; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscPrintReceivedElements.h; sourceTree = SOURCE_ROOT; };
 		63A47AC60FFAFC3BF093EC0F /* OscOutboundPacketStream.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscOutboundPacketStream.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscOutboundPacketStream.cpp; sourceTree = SOURCE_ROOT; };
+		6505DE9C1E9D30B8001BE986 /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
+		6505DE9D1E9D30B8001BE986 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		656C18C61E97CB7E0035CC97 /* ai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ai.cpp; sourceTree = "<group>"; };
 		656C18C71E97CB7E0035CC97 /* ai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ai.h; sourceTree = "<group>"; };
 		65BBB42B1E9BD624000FD80B /* gui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gui.cpp; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 				656C18C71E97CB7E0035CC97 /* ai.h */,
 				65BBB42B1E9BD624000FD80B /* gui.cpp */,
 				65BBB42C1E9BD624000FD80B /* gui.h */,
+				6505DE9C1E9D30B8001BE986 /* Background.cpp */,
+				6505DE9D1E9D30B8001BE986 /* Background.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -377,6 +382,7 @@
 				72A929D3561B8232A182ABFC /* ofxOscBundle.cpp in Sources */,
 				5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */,
 				656C18C81E97CB7E0035CC97 /* ai.cpp in Sources */,
+				6505DE9E1E9D30B8001BE986 /* Background.cpp in Sources */,
 				4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */,
 				65D19E6A1E9543770043FAB5 /* Paddle.cpp in Sources */,
 				640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */,

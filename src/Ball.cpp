@@ -81,7 +81,7 @@ void Ball::checkForPaddle() {
         if (ofDist(x, 0, player1->posX, 0) < speedX) {
             if ( y >= player1->posY && y <= player1->posY + player1->sizeY) {
                 speedX *= -1;
-                speedY += player1->velocityY * 0.5;
+                speedY += player1->velocityY * -0.5;
             }
             
         }
@@ -90,7 +90,7 @@ void Ball::checkForPaddle() {
         if (ofDist(x, 0, player2->posX + player2->sizeX, 0) < abs(speedX)) {
             if ( y >= player2->posY && y <= player2->posY + player2->sizeY) {
                 speedX *= -1;
-                speedY += player2->velocityY * 0.5;
+                speedY += player2->velocityY * -0.5;
             }
 
         }
