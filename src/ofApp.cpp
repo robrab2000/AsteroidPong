@@ -28,7 +28,7 @@ void ofApp::setup(){
     
     ofSetFrameRate(60);
     
-    asteroidManager.setup(&player1, &player2, &ball, &soundManager);
+    asteroidManager.setup(&player1, &player2, &ball, &soundManager, &scoreManager);
 }
 
 //--------------------------------------------------------------

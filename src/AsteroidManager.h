@@ -15,12 +15,15 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "SoundManager.h"
+#include "ScoreManager.h"
 
 class AsteroidManager {
 public:
-    void setup(Paddle*, Paddle*, Ball*, SoundManager*);
+    void setup(Paddle*, Paddle*, Ball*, SoundManager*, ScoreManager*);
     void update();
     void draw();
+    
+    void spawnAsteroids();
     void createAsteroid(ofVec2f, ofVec2f, int);
     ofVec2f randomAsteroidPosition();
     void checkForCollisions();
@@ -40,6 +43,7 @@ public:
     vector<Asteroid> Asteroids;
     
     SoundManager* soundManager;
+    ScoreManager* scoreManager;
     
 };
 

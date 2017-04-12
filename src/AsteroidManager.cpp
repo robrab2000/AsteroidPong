@@ -8,7 +8,7 @@
 
 #include "AsteroidManager.h"
 // Method to initialize the asteroids
-void AsteroidManager::setup(Paddle* _player1, Paddle* _player2, Ball* _ball, SoundManager* _soundManager) {
+void AsteroidManager::setup(Paddle* _player1, Paddle* _player2, Ball* _ball, SoundManager* _soundManager, ScoreManager* _scoreManager) {
     // Assign the player objects
     player1 = _player1;
     player2 = _player2;
@@ -16,14 +16,14 @@ void AsteroidManager::setup(Paddle* _player1, Paddle* _player2, Ball* _ball, Sou
     ball = _ball;
     // Assign the soundmanager
     soundManager = _soundManager;
-    
-    for (int i = 0; i < 10; i++) {
-        createAsteroid(randomAsteroidPosition(), ofVec2f(0,0), 3);
-    }
+    // Assign the scoreManager
+    scoreManager = _scoreManager;
 }
 
 // Method to update the asteroids
 void AsteroidManager::update() {
+    // Spawn asteroids
+    spawnAsteroids();
     // Loop through the asteroids and update them
     for (int i = 0; i < Asteroids.size(); i++) {
         Asteroids[i].update();
@@ -37,6 +37,15 @@ void AsteroidManager::draw() {
     // Loop through the asteroids and draw them
     for (int i = 0; i < Asteroids.size(); i++) {
         Asteroids[i].draw();
+    }
+}
+
+// Method to spawn asteroids at random
+void AsteroidManager::spawnAsteroids() {
+    // Random as way of a really shitty timer
+    if (ofRandom(1000) > 990) {
+        // Spawn an asteroid at random valid location
+        createAsteroid(randomAsteroidPosition(), ofVec2f(0,0), 3);
     }
 }
 
@@ -186,10 +195,14 @@ void AsteroidManager::checkForWallCollision(Asteroid* asteroid, int index) {
     
     // Check if asteroid has gone off map and destroy
     if (asteroid->position.x < 0 - asteroid->dim) {
+        // Award some points to player 1
+        scoreManager->addScore(1, 2);
         // Destroy the asteroid
         Asteroids.erase(Asteroids.begin() + index);
     }
     if (asteroid->position.x > ofGetWidth() + asteroid->dim) {
+        // Award some points to player 2
+        scoreManager->addScore(2, 2);
         // Destroy the asteroid
         Asteroids.erase(Asteroids.begin() + index);
     }

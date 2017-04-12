@@ -25,13 +25,13 @@ void ScoreManager::draw() {
 //    ofDrawBitmapString("player 2: " + ofToString(player2Score), posX, posY + 20);
 }
 
-void ScoreManager::addScore(int playerNumber) {
+void ScoreManager::addScore(int playerNumber, int score) {
     
     
     if (playerNumber == 1) {
-        player1Score++;
+        player1Score += score;
     }
     else if (playerNumber == 2) {
-        player2Score++;
+        player2Score += score;
     }
 }

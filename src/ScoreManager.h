@@ -18,7 +18,7 @@ public:
     void update();
     void draw();
     
-    void addScore(int);
+    void addScore(int, int);
     
     int player1Score, player2Score;
     int posX, posY;

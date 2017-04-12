@@ -139,7 +139,7 @@ void Ball::checkForScore() {
     
     if(x < 0 - dim){
         // increment player 1 score
-        scoreManager->addScore(1);
+        scoreManager->addScore(1, 10);
         speedX = 0;
         speedY= 0;
         ballPaddle = player2;
@@ -147,7 +147,7 @@ void Ball::checkForScore() {
         soundManager->playPing(-0.75);
     } else if(x > ofGetWidth() + dim){
         // increment player 2 score
-        scoreManager->addScore(2);
+        scoreManager->addScore(2, 10);
         speedX = 0;
         speedY= 0;
         ballPaddle = player1;
