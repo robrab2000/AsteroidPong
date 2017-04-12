@@ -14,11 +14,12 @@
 #include "ScoreManager.h"
 #include "Paddle.h"
 #include "gui.h"
+#include "SoundManager.h"
 
 class Ball {
     
 public:
-    void setup(ScoreManager*, Paddle*, Paddle*, gui*);
+    void setup(ScoreManager*, Paddle*, Paddle*, gui*, SoundManager*);
     void update();
     void draw();
     void checkForPaddle();
@@ -49,6 +50,8 @@ public:
     Paddle* player1;
     Paddle* player2;
     Paddle* ballPaddle;
+    
+    SoundManager* soundManager;
     
 private:
     

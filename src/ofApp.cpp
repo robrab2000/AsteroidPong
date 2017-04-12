@@ -7,7 +7,7 @@ void ofApp::setup(){
     ofBackground(0, 0, 0);
     player1.setup(1, ofColor(255));
     player2.setup(2, ofColor(255));
-    ball.setup(&scoreManager, &player1, &player2, &gui);
+    ball.setup(&scoreManager, &player1, &player2, &gui, &soundManager);
     ofSetBackgroundAuto(true);
     // listen on the given port
     cout << "listening for osc messages on port " << RECEIVER_PORT << "\n";
@@ -19,6 +19,8 @@ void ofApp::setup(){
     aiPlayer.setup(&scoreManager, &player2, &ball, &gui);
     gui.setup(&scoreManager, &sender);
     gui.resetGui();
+    // Initialize sound
+    soundManager.setup(true);
     
     ofSetFrameRate(60);
 }

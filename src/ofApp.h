@@ -7,6 +7,7 @@
 #include "ofxOsc.h"
 #include "ai.h"
 #include "gui.h"
+#include "SoundManager.h"
 
 
 // listen on port 12345
@@ -52,4 +53,5 @@ class ofApp : public ofBaseApp{
     Paddle player1, player2;
     ai aiPlayer;
     gui gui;
+    SoundManager soundManager;
 };
