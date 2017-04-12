@@ -20,12 +20,14 @@ public:
     void playPing(float);
     void playWall(float);
     void ballRelease(float);
+    void playExplosion(float);
     void playMusic();
     
     ofSoundPlayer pingSound;
     ofSoundPlayer pongSound;
     ofSoundPlayer wallSound;
     ofSoundPlayer releaseBall;
+    ofSoundPlayer explosionSound;
     ofSoundPlayer music;
     
     bool audioOn;

@@ -25,9 +25,9 @@ public:
     ofVec2f randomAsteroidPosition();
     void checkForCollisions();
     void checkForBallCollision(Asteroid, int);
-    void checkForAsteroidCollision(Asteroid, int);
+    void checkForAsteroidCollision(Asteroid*, int);
     void checkForPaddleCollision(Asteroid*);
-    void checkForWallCollision(Asteroid*);
+    void checkForWallCollision(Asteroid*, int);
     
     
     ofVec2f vec;

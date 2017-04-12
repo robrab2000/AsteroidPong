@@ -75,7 +75,7 @@ void Ball::checkForPaddle() {
                 // Ball takes on some of the paddle's momentum on the y axis
                 speedY += player1->velocityY * -0.5;
                 // Ball preserves some of the paddle's momentum on the x axis too
-                speedX + (player1->velocityY * 1); // THIS NEEDS X MULTIPLIER
+//                speedX += (player1->velocityY * 0.5); // THIS NEEDS TUNING
                 // Trigger pong sound
                 soundManager->playPong(0.7);
             }
@@ -90,7 +90,7 @@ void Ball::checkForPaddle() {
                 // Ball takes on some of the paddle's momentum on the y axis
                 speedY += player2->velocityY * -0.5;
                 // Ball preserves some of the paddles velocity on the x axis too
-                speedX - (player2->velocityY * 1);
+//                speedX -= (player2->velocityY * 0.5); // THIS NEEDS TUNING
                 // Trigger pong sound
                 soundManager->playPong(-0.7);
             }
