@@ -40,43 +40,11 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
 }
 
 void Ball::update(){
-    if (abs(speedX) > startingX) {
-        speedX *= speedDampen;
-        ofLog(OF_LOG_NOTICE, "X: " + ofToString(abs(speedX)));
-    }
-    if (abs(speedY) > startingY) {
-        speedY *= speedDampen;
-        //ofLog(OF_LOG_NOTICE, "Y: " + ofToString(abs(speedY)));
-    }
-    if(x < 0 - dim){
-        // increment player 1 score
-        scoreManager->addScore(1);
-        speedX = 0;
-        speedY= 0;
-        ballPaddle = player2;
-        paddleBallSet = true;
-        soundManager->playPing(-0.75);
-    } else if(x > ofGetWidth() + dim){
-        // increment player 2 score
-        scoreManager->addScore(2);
-        speedX = 0;
-        speedY= 0;
-        ballPaddle = player1;
-        paddleBallSet = true;
-        soundManager->playPing(0.75);
-    }
-    
-    if(y < 0 ){
-        y = 0 + dim;
-        speedY *= -1;
-        soundManager->playWall(x / ofGetWidth());
-    } else if(y > ofGetHeight()){
-        y = ofGetHeight() - dim;
-        speedY *= -1;
-        soundManager->playWall(x / ofGetWidth());
-    }
-    
+    dampenBallSpeed();
+    checkForScore();
+    checkForWall();
     checkForPaddle();
+    
     if (paddleBallSet) {
         holdPaddleBall();
     } else {
@@ -158,4 +126,53 @@ void Ball::releasePaddle() {
     };
     // Tell the gui to stop showing the release button text
     gui->releaseBall();
+}
+
+// Method to check if the ball has left the area
+void Ball::checkForScore() {
+    
+    if(x < 0 - dim){
+        // increment player 1 score
+        scoreManager->addScore(1);
+        speedX = 0;
+        speedY= 0;
+        ballPaddle = player2;
+        paddleBallSet = true;
+        soundManager->playPing(-0.75);
+    } else if(x > ofGetWidth() + dim){
+        // increment player 2 score
+        scoreManager->addScore(2);
+        speedX = 0;
+        speedY= 0;
+        ballPaddle = player1;
+        paddleBallSet = true;
+        soundManager->playPing(0.75);
+    }
+}
+
+// Method to check if the ball has hit a wall
+void Ball::checkForWall() {
+    
+    if(y < 0 ){
+        y = 0 + dim;
+        speedY *= -1;
+        soundManager->playWall(x / ofGetWidth());
+    } else if(y > ofGetHeight()){
+        y = ofGetHeight() - dim;
+        speedY *= -1;
+        soundManager->playWall(x / ofGetWidth());
+    }
+}
+
+// Method to dampen the ball speed if its going too fast
+void Ball::dampenBallSpeed() {
+    
+    if (abs(speedX) > startingX) {
+        speedX *= speedDampen;
+        ofLog(OF_LOG_NOTICE, "X: " + ofToString(abs(speedX))); //WHY IS THIS NOT WORKING
+    }
+    if (abs(speedY) > startingY) {
+        speedY *= speedDampen;
+//        ofLog(OF_LOG_NOTICE, "Y: " + ofToString(abs(speedY)));
+    }
 }

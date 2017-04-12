@@ -25,6 +25,9 @@ public:
     void checkForPaddle();
     void holdPaddleBall();
     void releasePaddle();
+    void checkForScore();
+    void checkForWall();
+    void dampenBallSpeed();
     
     // variables
     float startingX;
