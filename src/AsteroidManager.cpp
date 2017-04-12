@@ -187,7 +187,7 @@ void AsteroidManager::checkForPaddleCollision(Asteroid* asteroid) {
 
 }
 
-// Method to check for collisions with wall
+// Method to check for collisions with wall 
 void AsteroidManager::checkForWallCollision(Asteroid* asteroid, int index) {
     if(asteroid->position.y < 0 ){
         asteroid->position.y = 0 + ball->dim;
