@@ -14,15 +14,11 @@ void Asteroid::setup(ofVec2f _position, ofVec2f _velocity, int _level) {
     setSize(_level);
     myColor = ofColor(255, 255, 255);
     
-    // Set the possible asteroid sizes
-    dim1 = 30;
-    dim2 = 20;
-    dim3 = 10;
 }
 
 // Method to update the asteroid
 void Asteroid::update() {
-    
+    calcPos();
 }
 
 // Method to draw the asteroid
@@ -38,13 +34,18 @@ void Asteroid::setSize(int size) {
     level = size;
     switch(size) {
         case 3:
-            dim = dim3;
+            dim = DIM3;
             break;
         case 2:
-            dim = dim2;
+            dim = DIM2;
             break;
         case 1:
-            dim = dim1;
+            dim = DIM1;
             break;
     }
+}
+
+// Method to calculate the movement of the asteroid
+void Asteroid::calcPos() {
+    position += velocity;
 }

@@ -29,7 +29,7 @@ void SoundManager::setup(bool _audioOn) {
     audioOn = _audioOn;
     
     // Start the music
-    playMusic();
+    //playMusic();
 }
 
 void SoundManager::update() {

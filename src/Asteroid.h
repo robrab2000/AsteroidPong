@@ -9,6 +9,11 @@
 #ifndef Asteroid_h
 #define Asteroid_h
 
+// Set the possible asteroid sizes
+#define DIM1 5;
+#define DIM2 10;
+#define DIM3 20;
+
 #include <stdio.h>
 #include "ofMain.h"
 
@@ -18,6 +23,7 @@ public:
     void update();
     void draw();
     void setSize(int);
+    void calcPos();
     
     ofVec2f position;
     ofVec2f velocity;

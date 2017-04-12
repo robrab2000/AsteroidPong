@@ -24,11 +24,11 @@ void ofApp::setup(){
     gui.setup(&scoreManager, &sender);
     gui.resetGui();
     // Initialize sound
-    soundManager.setup(false);
+    soundManager.setup(true);
     
     ofSetFrameRate(60);
     
-    asteroidManager.setup(&player1, &player2, &ball);
+    asteroidManager.setup(&player1, &player2, &ball, &soundManager);
 }
 
 //--------------------------------------------------------------
