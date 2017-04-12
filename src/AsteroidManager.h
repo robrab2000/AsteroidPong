@@ -13,19 +13,23 @@
 #include "ofMain.h"
 #include "Asteroid.h"
 #include "Paddle.h"
+#include "Ball.h"
 
 class AsteroidManager {
 public:
-    void setup(Paddle*, Paddle*);
+    void setup(Paddle*, Paddle*, Ball*);
     void update();
     void draw();
     void createAsteroid(ofVec2f, ofVec2f, int);
     ofVec2f randomAsteroidPosition();
+    void checkForCollisions();
     
     ofVec2f vec;
     
     Paddle* player1;
     Paddle* player2;
+    
+    Ball* ball;
     
     vector<Asteroid> Asteroids;
     

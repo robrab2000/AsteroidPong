@@ -24,8 +24,9 @@ public:
     float dim;
     float level;
     
-    
     float dim1, dim2, dim3;
+    
+    ofColor myColor;
 };
 
 #endif /* Asteroid_h */

@@ -7,10 +7,12 @@
 //
 
 #include "Asteroid.h"
+// Method to initialize the asteroid
 void Asteroid::setup(ofVec2f _position, ofVec2f _velocity, int _level) {
     position = _position;
     velocity = _velocity;
     setSize(_level);
+    myColor = ofColor(255, 255, 255);
     
     // Set the possible asteroid sizes
     dim1 = 30;
@@ -18,15 +20,20 @@ void Asteroid::setup(ofVec2f _position, ofVec2f _velocity, int _level) {
     dim3 = 10;
 }
 
+// Method to update the asteroid
 void Asteroid::update() {
     
 }
 
+// Method to draw the asteroid
 void Asteroid::draw() {
+    ofPushMatrix();
+    ofSetColor(myColor);
     ofDrawCircle(position.x, position.y, dim);
-    
+    ofPopMatrix();
 }
 
+// Method to set the size of the asteroid based on it's level
 void Asteroid::setSize(int size) {
     level = size;
     switch(size) {
