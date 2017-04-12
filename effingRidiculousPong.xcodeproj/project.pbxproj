@@ -16,6 +16,7 @@
 		6505DE9E1E9D30B8001BE986 /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6505DE9C1E9D30B8001BE986 /* Background.cpp */; };
 		6505DEA11E9E529E001BE986 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6505DE9F1E9E529E001BE986 /* SoundManager.cpp */; };
 		6505DEA41E9E6ABD001BE986 /* Asteroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6505DEA21E9E6ABD001BE986 /* Asteroid.cpp */; };
+		6505DEA71E9E87FD001BE986 /* AsteroidManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6505DEA51E9E87FD001BE986 /* AsteroidManager.cpp */; };
 		656C18C81E97CB7E0035CC97 /* ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 656C18C61E97CB7E0035CC97 /* ai.cpp */; };
 		65BBB42D1E9BD624000FD80B /* gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BBB42B1E9BD624000FD80B /* gui.cpp */; };
 		65D19E691E9543770043FAB5 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D19E631E9543770043FAB5 /* Ball.cpp */; };
@@ -79,6 +80,8 @@
 		6505DEA01E9E529E001BE986 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		6505DEA21E9E6ABD001BE986 /* Asteroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asteroid.cpp; sourceTree = "<group>"; };
 		6505DEA31E9E6ABD001BE986 /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
+		6505DEA51E9E87FD001BE986 /* AsteroidManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AsteroidManager.cpp; sourceTree = "<group>"; };
+		6505DEA61E9E87FD001BE986 /* AsteroidManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsteroidManager.h; sourceTree = "<group>"; };
 		656C18C61E97CB7E0035CC97 /* ai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ai.cpp; sourceTree = "<group>"; };
 		656C18C71E97CB7E0035CC97 /* ai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ai.h; sourceTree = "<group>"; };
 		65BBB42B1E9BD624000FD80B /* gui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gui.cpp; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				6505DEA01E9E529E001BE986 /* SoundManager.h */,
 				6505DEA21E9E6ABD001BE986 /* Asteroid.cpp */,
 				6505DEA31E9E6ABD001BE986 /* Asteroid.h */,
+				6505DEA51E9E87FD001BE986 /* AsteroidManager.cpp */,
+				6505DEA61E9E87FD001BE986 /* AsteroidManager.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -387,6 +392,7 @@
 			files = (
 				65D19E6B1E9543770043FAB5 /* ScoreManager.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				6505DEA71E9E87FD001BE986 /* AsteroidManager.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				65BBB42D1E9BD624000FD80B /* gui.cpp in Sources */,
 				6505DEA11E9E529E001BE986 /* SoundManager.cpp in Sources */,

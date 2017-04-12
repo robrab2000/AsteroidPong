@@ -14,15 +14,18 @@
 
 class Asteroid {
 public:
-    void setup(float, float, int);
+    void setup(ofVec2f, ofVec2f, int);
     void update();
     void draw();
     void setSize(int);
     
-    float posX;
-    float posY;
+    ofVec2f position;
+    ofVec2f velocity;
     float dim;
     float level;
+    
+    
+    float dim1, dim2, dim3;
 };
 
 #endif /* Asteroid_h */

@@ -28,7 +28,7 @@ void ofApp::setup(){
     
     ofSetFrameRate(60);
     
-    
+    asteroidManager.setup(&player1, &player2);
 }
 
 //--------------------------------------------------------------
@@ -41,6 +41,7 @@ void ofApp::update(){
         }
         player1.update();
         player2.update();
+        asteroidManager.update();
     }
 }
 
@@ -51,9 +52,7 @@ void ofApp::draw(){
 
     ball.draw();
     
-    if (gameStarted) {
-        scoreManager.draw();
-    }
+    asteroidManager.draw();
     
     player1.draw();
     

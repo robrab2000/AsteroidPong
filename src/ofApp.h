@@ -8,7 +8,7 @@
 #include "ai.h"
 #include "gui.h"
 #include "SoundManager.h"
-#include "Asteroid.h"
+#include "AsteroidManager.h"
 
 
 // listen on port 12345
@@ -55,6 +55,6 @@ class ofApp : public ofBaseApp{
     ai aiPlayer;
     gui gui;
     SoundManager soundManager;
+    AsteroidManager asteroidManager;
     
-    vector<Asteroid> Asteroids;
 };
