@@ -163,9 +163,11 @@ void ofApp::checkOSC() {
             }
         }
         if (ball.ballPaddle != NULL) {
-            if (ball.ballPaddle->playerNumber == 1 && ball.paddleBallSet) {
-                if (m.getAddress() == "/1/push1") {
-                    ball.releasePaddle();
+            if (twoPlayers == true || ball.ballPaddle->playerNumber == 1 ) {
+                if (ball.paddleBallSet) {
+                    if (m.getAddress() == "/1/push1") {
+                        ball.releasePaddle();
+                    }
                 }
             }
         }
