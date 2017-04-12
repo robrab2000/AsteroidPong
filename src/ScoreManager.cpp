@@ -15,14 +15,11 @@ ScoreManager::ScoreManager() {
 void ScoreManager::setup() {
     player1Score = 0;
     player2Score = 0;
-    
-    posX = 100;
-    posY = 100;
 }
 
 void ScoreManager::draw() {
-//    ofDrawBitmapString("player 1: " + ofToString(player1Score), posX, posY);
-//    ofDrawBitmapString("player 2: " + ofToString(player2Score), posX, posY + 20);
+    ofDrawBitmapString("player 2: " + ofToString(player2Score), ofGetWidth() * 0.2, 50);
+    ofDrawBitmapString("player 1: " + ofToString(player1Score), ofGetWidth() * 0.7, 50 );
 }
 
 void ScoreManager::addScore(int playerNumber, int score) {

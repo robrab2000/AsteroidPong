@@ -21,7 +21,6 @@ public:
     void addScore(int, int);
     
     int player1Score, player2Score;
-    int posX, posY;
     
     ScoreManager();
     

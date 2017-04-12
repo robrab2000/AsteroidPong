@@ -10,9 +10,9 @@
 #define Asteroid_h
 
 // Set the possible asteroid sizes
-#define DIM1 5;
-#define DIM2 10;
-#define DIM3 20;
+#define DIM1 7;
+#define DIM2 15;
+#define DIM3 25;
 
 #include <stdio.h>
 #include "ofMain.h"

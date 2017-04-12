@@ -2,6 +2,8 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
+//    ofToggleFullscreen();
     gameStarted = false;
     scoreManager.setup();
     ofBackground(0, 0, 0);
@@ -57,6 +59,8 @@ void ofApp::draw(){
     player1.draw();
     
     player2.draw();
+    
+    scoreManager.draw();
 }
 
 //--------------------------------------------------------------

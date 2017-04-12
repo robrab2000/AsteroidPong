@@ -36,7 +36,12 @@ void AsteroidManager::update() {
 void AsteroidManager::draw() {
     // Loop through the asteroids and draw them
     for (int i = 0; i < Asteroids.size(); i++) {
+        ofPushMatrix();
+        ofSetCircleResolution(5);
+        ofNoFill();
         Asteroids[i].draw();
+        ofFill();
+        ofPopMatrix();
     }
 }
 
@@ -109,11 +114,12 @@ void AsteroidManager::checkForBallCollision(Asteroid asteroid, int index) {
                     // Create the new asteroid
                     createAsteroid(newPos, newVel, asteroid.level - 1);
                 }
+                
+                // Make sound for asteroid exploding
+                soundManager->playExplosion(asteroid.position.x / ofGetWidth());
+                // Destroy the asteroid
+                Asteroids.erase(Asteroids.begin() + index);
             }
-            // Make sound for asteroid exploding
-            soundManager->playExplosion(asteroid.position.x / ofGetWidth());
-            // Destroy the asteroid
-            Asteroids.erase(Asteroids.begin() + index);
         }
     }
 }
