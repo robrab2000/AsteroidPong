@@ -9,20 +9,26 @@ void ofApp::setup(){
     player2.setup(2, ofColor(255));
     ball.setup(&scoreManager, &player1, &player2, &gui, &soundManager);
     ofSetBackgroundAuto(true);
-    // listen on the given port
-    cout << "listening for osc messages on port " << RECEIVER_PORT << "\n";
+    
+    // Initialize OSC
+        // listen on the given port
+        cout << "listening for osc messages on port " << RECEIVER_PORT << "\n";
     receiver.setup(RECEIVER_PORT);
     
-    // send on the given port
-    cout << "sending osc messages on port " << SENDER_PORT << " and ip " << SENDER_IP << "\n";
+        // send on the given port
+        cout << "sending osc messages on port " << SENDER_PORT << " and ip " << SENDER_IP << "\n";
     sender.setup(SENDER_IP, SENDER_PORT);
+    // Initialize AI
     aiPlayer.setup(&scoreManager, &player2, &ball, &gui);
+    // Initialize GUI
     gui.setup(&scoreManager, &sender);
     gui.resetGui();
     // Initialize sound
-    soundManager.setup(true);
+    soundManager.setup(false);
     
     ofSetFrameRate(60);
+    
+    
 }
 
 //--------------------------------------------------------------

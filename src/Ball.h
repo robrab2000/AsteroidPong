@@ -39,6 +39,8 @@ public:
     float noise;
     float paddlePos;
     float speedDampen;
+    float terminalX;
+    float terminalY;
     int dim;
     ofColor color;
     bool paddleBallSet;

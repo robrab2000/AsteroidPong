@@ -13,11 +13,17 @@ Ball::Ball(){
 }
 
 void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2, class gui* _gui, SoundManager* _soundManager){
-    x = ofRandom(0, ofGetWidth());
-    y = ofRandom(0, ofGetHeight());
+    x = ofGetWidth() * 0.5; //ofRandom(0, ofGetWidth());
+    y = ofGetHeight() * 0.5; //ofRandom(0, ofGetHeight());
     
     startingX = 5;
-    startingY = 5;
+    if(ofRandom(10) > 5) {
+        startingX *= -1;
+    }
+    startingY = ofRandom(-3, 3);
+    
+    terminalX = 5;
+    terminalY = 5;
     
     speedDampen = 0.99;
     
@@ -167,11 +173,11 @@ void Ball::checkForWall() {
 // Method to dampen the ball speed if its going too fast
 void Ball::dampenBallSpeed() {
     
-    if (abs(speedX) > startingX) {
+    if (abs(speedX) > terminalX) {
         speedX *= speedDampen;
         ofLog(OF_LOG_NOTICE, "X: " + ofToString(abs(speedX))); //WHY IS THIS NOT WORKING
     }
-    if (abs(speedY) > startingY) {
+    if (abs(speedY) > terminalY) {
         speedY *= speedDampen;
 //        ofLog(OF_LOG_NOTICE, "Y: " + ofToString(abs(speedY)));
     }

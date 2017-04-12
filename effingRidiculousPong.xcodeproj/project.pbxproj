@@ -15,6 +15,7 @@
 		640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C2FAC65C491D4231379F3298 /* ofxOscReceiver.cpp */; };
 		6505DE9E1E9D30B8001BE986 /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6505DE9C1E9D30B8001BE986 /* Background.cpp */; };
 		6505DEA11E9E529E001BE986 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6505DE9F1E9E529E001BE986 /* SoundManager.cpp */; };
+		6505DEA41E9E6ABD001BE986 /* Asteroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6505DEA21E9E6ABD001BE986 /* Asteroid.cpp */; };
 		656C18C81E97CB7E0035CC97 /* ai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 656C18C61E97CB7E0035CC97 /* ai.cpp */; };
 		65BBB42D1E9BD624000FD80B /* gui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65BBB42B1E9BD624000FD80B /* gui.cpp */; };
 		65D19E691E9543770043FAB5 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65D19E631E9543770043FAB5 /* Ball.cpp */; };
@@ -76,6 +77,8 @@
 		6505DE9D1E9D30B8001BE986 /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
 		6505DE9F1E9E529E001BE986 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundManager.cpp; sourceTree = "<group>"; };
 		6505DEA01E9E529E001BE986 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		6505DEA21E9E6ABD001BE986 /* Asteroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Asteroid.cpp; sourceTree = "<group>"; };
+		6505DEA31E9E6ABD001BE986 /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
 		656C18C61E97CB7E0035CC97 /* ai.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ai.cpp; sourceTree = "<group>"; };
 		656C18C71E97CB7E0035CC97 /* ai.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ai.h; sourceTree = "<group>"; };
 		65BBB42B1E9BD624000FD80B /* gui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gui.cpp; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 				6505DE9D1E9D30B8001BE986 /* Background.h */,
 				6505DE9F1E9E529E001BE986 /* SoundManager.cpp */,
 				6505DEA01E9E529E001BE986 /* SoundManager.h */,
+				6505DEA21E9E6ABD001BE986 /* Asteroid.cpp */,
+				6505DEA31E9E6ABD001BE986 /* Asteroid.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -398,6 +403,7 @@
 				65D19E691E9543770043FAB5 /* Ball.cpp in Sources */,
 				510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */,
 				62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */,
+				6505DEA41E9E6ABD001BE986 /* Asteroid.cpp in Sources */,
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
