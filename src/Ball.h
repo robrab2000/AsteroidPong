@@ -36,7 +36,6 @@ public:
     float y;
     float speedY;
     float speedX;
-    float noise;
     float paddlePos;
     float speedDampen;
     float terminalX;

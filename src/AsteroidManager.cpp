@@ -9,14 +9,11 @@
 #include "AsteroidManager.h"
 // Method to initialize the asteroids
 void AsteroidManager::setup(Paddle* _player1, Paddle* _player2, Ball* _ball, SoundManager* _soundManager, ScoreManager* _scoreManager) {
-    // Assign the player objects
+    // Assign the pointers
     player1 = _player1;
     player2 = _player2;
-    // Assign the ball object
     ball = _ball;
-    // Assign the soundmanager
     soundManager = _soundManager;
-    // Assign the scoreManager
     scoreManager = _scoreManager;
 }
 
@@ -36,12 +33,8 @@ void AsteroidManager::update() {
 void AsteroidManager::draw() {
     // Loop through the asteroids and draw them
     for (int i = 0; i < Asteroids.size(); i++) {
-        ofPushMatrix();
-        ofSetCircleResolution(5);
-        ofNoFill();
+        // Tell the asteroid to draw
         Asteroids[i].draw();
-        ofFill();
-        ofPopMatrix();
     }
 }
 
@@ -66,10 +59,13 @@ void AsteroidManager::createAsteroid(ofVec2f _position, ofVec2f _velocity, int _
 
 // Method to determine a valid position for a new asteroid
 ofVec2f AsteroidManager::randomAsteroidPosition() {
+    // Create a bool to indicate whether the proposed position is okay and set to false
     bool isOkay = false;
+    // Create a 2dVector to hold the new position
     ofVec2f newPoint;
-    
+    // While the position is not okay
     while(!isOkay) {
+        // Create a random point
         newPoint = ofVec2f(ofRandom(player2->posX + player2->sizeX + 30, player1->posX - 30), ofRandom(30, ofGetHeight() - 30));
         // If the vector of asteroids is empty then just accept the position
         if (Asteroids.size() == 0) {
@@ -129,6 +125,7 @@ void AsteroidManager::checkForAsteroidCollision(Asteroid* asteroid, int index) {
     
     // Loop through all of the asteroids
     for (int i = 0; i < Asteroids.size(); i++) {
+        // First we work out which asteroid is smallest
         float smallerAsteroid;
         if (asteroid->dim < Asteroids[i].dim) {
             smallerAsteroid = asteroid->dim;
@@ -156,9 +153,11 @@ void AsteroidManager::checkForAsteroidCollision(Asteroid* asteroid, int index) {
 
 // Method to check for collisions with paddle
 void AsteroidManager::checkForPaddleCollision(Asteroid* asteroid) {
-    
+    // If the asteroid is on the right hand side of the screen
     if(asteroid->position.x > ofGetWidth() * 0.5) {
+        // If the x position of the asteroid is less than it will move in the next frame
         if (ofDist(asteroid->position.x, 0, player1->posX, 0) < asteroid->velocity.x) {
+            // If the y position lies within range of the paddle
             if ( asteroid->position.y >= player1->posY && asteroid->position.y <= player1->posY + player1->sizeY) {
                 // Ball switched directions on X axis and Ball takes on some of the paddle's momentum on the y axis
                 asteroid->velocity = ofVec2f(asteroid->velocity.x * -1, asteroid->velocity.y += player1->velocityY * -0.5);
@@ -171,8 +170,10 @@ void AsteroidManager::checkForPaddleCollision(Asteroid* asteroid) {
         }
     }
     
+    // If the asteroid is on the left hand side of the screen
     if (asteroid->position.x < ofGetWidth() * 0.5) {
         if (ofDist(asteroid->position.x, 0, player2->posX + player2->sizeX, 0) < abs(asteroid->velocity.x)) {
+            // If the x position of the asteroid is less than it will move in the next frame
             if ( asteroid->position.y >= player2->posY && asteroid->position.y <= player2->posY + player2->sizeY) {
                 // Ball switched directions on X axis and Ball takes on some of the paddle's momentum on the y axis
                 asteroid->velocity = ofVec2f(asteroid->velocity.x *= -1, asteroid->velocity.y += player2->velocityY * -0.5);
@@ -189,12 +190,19 @@ void AsteroidManager::checkForPaddleCollision(Asteroid* asteroid) {
 
 // Method to check for collisions with wall 
 void AsteroidManager::checkForWallCollision(Asteroid* asteroid, int index) {
-    if(asteroid->position.y < 0 ){
+    // Check if the ball will collide with wall on the next frame
+    if(asteroid->position.y - asteroid->velocity.y < 0 ){
+        // Set asteroid to correct position
         asteroid->position.y = 0 + ball->dim;
+        // Reverse Asteroid's movement direction
         asteroid->velocity = ofVec2f(asteroid->velocity.x, asteroid->velocity.y * -1);
         soundManager->playWall(asteroid->position.x / ofGetWidth());
-    } else if(asteroid->position.y > ofGetHeight()){
+    }
+    // Check if the ball will collide with wall on the next frame
+    else if(asteroid->position.y + asteroid->velocity.y > ofGetHeight()){
+        // Set asteroid to correct position
         asteroid->position.y = ofGetHeight() - ball->dim;
+        // Reverse Asteroid's movement direction
         asteroid->velocity = ofVec2f(asteroid->velocity.x, asteroid->velocity.y * -1);
         soundManager->playWall(asteroid->position.x / ofGetWidth());
     }

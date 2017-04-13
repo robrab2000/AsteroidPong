@@ -12,6 +12,7 @@
 
 #include "SoundManager.h"
 
+// Method to initialize the soundManager
 void SoundManager::setup(bool _audioOn) {
     // Set up the soundPlayers
     pongSound.setMultiPlay(true);
@@ -39,10 +40,12 @@ void SoundManager::setup(bool _audioOn) {
     playMusic();
 }
 
+// Method to update the soundManager
 void SoundManager::update() {
     
 }
 
+// Method to play the pong sound
 void SoundManager::playPong(float pan) {
     if (audioOn) {
         pongSound.play();
@@ -50,6 +53,7 @@ void SoundManager::playPong(float pan) {
     }
 }
 
+// Method to play the ping sound
 void SoundManager::playPing(float pan) {
     if (audioOn) {
         pingSound.play();
@@ -57,6 +61,7 @@ void SoundManager::playPing(float pan) {
     }
 }
 
+// Method to play the wall sound
 void SoundManager::playWall(float pan) {
     if (audioOn) {
         wallSound.play();
@@ -64,6 +69,7 @@ void SoundManager::playWall(float pan) {
     }
 }
 
+// Method to play the ball release sound
 void SoundManager::ballRelease(float pan) {
     if (audioOn) {
         releaseBall.play();
@@ -71,6 +77,7 @@ void SoundManager::ballRelease(float pan) {
     }
 }
 
+// Method to play the explosion sound
 void SoundManager::playExplosion(float pan) {
     if (audioOn) {
         explosionSound.play();
@@ -78,6 +85,7 @@ void SoundManager::playExplosion(float pan) {
     }
 }
 
+// Method to play the music
 void SoundManager::playMusic() {
     if (audioOn) {
         music.play();

@@ -18,7 +18,6 @@
 #define SENDER_IP "192.168.1.6"
 #define NUM_MSG_STRINGS 20
 class ofApp : public ofBaseApp{
-
 	public:
 		void setup();
 		void update();

@@ -2,15 +2,21 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    
-//    ofToggleFullscreen();
+    // Set the game to not yet started
     gameStarted = false;
-    scoreManager.setup();
+    // Set the background
     ofBackground(0, 0, 0);
+    ofSetBackgroundAuto(true);
+    // Set the gam's framerate
+    ofSetFrameRate(60);
+    
+    // Initialize the scoreManager
+    scoreManager.setup();
+    // Initialize the two players
     player1.setup(1, ofColor(255));
     player2.setup(2, ofColor(255));
+    // Initialize the ball
     ball.setup(&scoreManager, &player1, &player2, &gui, &soundManager);
-    ofSetBackgroundAuto(true);
     
     // Initialize OSC
         // listen on the given port
@@ -27,44 +33,52 @@ void ofApp::setup(){
     gui.resetGui();
     // Initialize sound
     soundManager.setup(true);
-    
-    ofSetFrameRate(60);
-    
+    // Initialize the asteroid Manager
     asteroidManager.setup(&player1, &player2, &ball, &soundManager, &scoreManager);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    // Checks for OSC input
     checkOSC();
+    // If the game has started
     if (gameStarted) {
+        // Update the ball
         ball.update();
+        // If there is only one player
         if (!twoPlayers) {
+            // Update the AI
             aiPlayer.update();
         }
+        // Update the 1st player
         player1.update();
+        // Update the 2nd player
         player2.update();
+        // Update the asteroid Manager
         asteroidManager.update();
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
+    // Draw the net
     drawNet();
-
+    // Draw the ball
     ball.draw();
-    
+    // Draw the asteroids
     asteroidManager.draw();
-    
+    // Draw the 1st player
     player1.draw();
-    
+    // Draw the 2nd player
     player2.draw();
-    
+    // Draw the score manager
     scoreManager.draw();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    // These are just for debuggin purposes
+    
     if (key == '1') {
         twoPlayers = false;
         gameStarted = true;
@@ -129,11 +143,15 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 }
 //--------------------------------------------------------------
 void ofApp::drawNet(){
+    // Define the properties of the net
     int netPieces = 20;
     float netWidth = 10;
+    // Iterate through the pieces of net
     for (int i = 0; i < netPieces; i++) {
         ofPushMatrix();
+        // Move the canvas to draw the next piece
         ofTranslate((ofGetWidth() * 0.5) - (netWidth * 0.5), i * ofGetHeight() / (float)netPieces);
+        // Draw this piece of the net
         ofDrawRectangle(0, 0, netWidth, ofGetHeight() / (float)netPieces / 2);
         ofPopMatrix();
     }
@@ -147,14 +165,16 @@ void ofApp::exit() {
 
 //--------------------------------------------------------------
 void ofApp::checkOSC() {
+    // Send incoming osc messages into the buffer
     if (messageBuffer.size()>maxBufferSize) messageBuffer.pop_back();
     
-    // check for waiting messages
+    // Check for waiting messages
     while (receiver.hasWaitingMessages()) {
-        // get the next message
+        // Get the next message
         ofxOscMessage m;
         receiver.getNextMessage(m);
         
+        // If the message is from player 1's fader
         if (m.getAddress() == "/1/fader7") {
             player1.takeInput(m.getArgAsFloat(0));
             if (!gameStarted) {
@@ -162,6 +182,7 @@ void ofApp::checkOSC() {
                 gameStarted = true;
             }
         }
+        // If the message is from player 1's fader
         if (m.getAddress() == "/1/fader8") {
             if(!gameStarted){
                 twoPlayers = true;
@@ -171,6 +192,7 @@ void ofApp::checkOSC() {
                 player2.takeInput(m.getArgAsFloat(0));
             }
         }
+        // If the message is from the release button
         if (ball.ballPaddle != NULL) {
             if (twoPlayers == true || ball.ballPaddle->playerNumber == 1 ) {
                 if (ball.paddleBallSet) {
@@ -182,7 +204,7 @@ void ofApp::checkOSC() {
         }
     }
     
-    
+    // If the game has started
     if (gameStarted) {
         // Create bundle variable
         ofxOscBundle b;
@@ -208,5 +230,6 @@ void ofApp::checkOSC() {
 }
 //--------------------------------------------------------------
 void ofApp::startGame() {
+    // Start the game
     gameStarted = true;
 }

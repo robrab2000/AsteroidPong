@@ -25,10 +25,6 @@ public:
     void player1SliderPos(float);
     void player2SliderPos(float);
     
-    
-    bool startGame();
-    
-    
     ScoreManager* scoreManager;
     ofxOscSender* sender;
 };

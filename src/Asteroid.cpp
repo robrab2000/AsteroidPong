@@ -7,26 +7,38 @@
 //
 
 #include "Asteroid.h"
+
 // Method to initialize the asteroid
 void Asteroid::setup(ofVec2f _position, ofVec2f _velocity, int _level) {
+    // Assign pointers
     position = _position;
     velocity = _velocity;
     setSize(_level);
+    // Set a color for the asteroid
     myColor = ofColor(255, 255, 255);
-    
 }
 
 // Method to update the asteroid
 void Asteroid::update() {
+    // Call function to update the asteroid's position
     calcPos();
 }
 
 // Method to draw the asteroid
 void Asteroid::draw() {
     ofPushMatrix();
-    ofSetColor(myColor);
-    ofTranslate(position.x, position.y);
-    ofDrawCircle(0, 0, dim);
+        // Set the colour of the asteroid
+        ofSetColor(myColor);
+        // Set the resolution of the circle
+        ofSetCircleResolution(5);
+        // Move the position of the canvas
+        ofTranslate(position.x, position.y);
+        // Set to No Fill 
+        ofNoFill();
+        // Draw the actual asteroid
+        ofDrawCircle(0, 0, dim);
+        // Set to Fill again
+        ofFill();
     ofPopMatrix();
 }
 

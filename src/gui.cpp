@@ -8,19 +8,24 @@
 
 #include "gui.h"
 
+// Method to initialize the gui
 void gui::setup(ScoreManager* _scoreManager, ofxOscSender* _sender) {
+    // Assign pointers
     scoreManager = _scoreManager;
     sender = _sender;
 }
 
+// Method to update the gui
 void gui::update() {
     
 }
 
+// Method to draw the gui
 void gui::draw() {
     
 }
 
+// Method to reset the gui
 void gui::resetGui() {
     // Create bundle variable
     ofxOscBundle b;
@@ -54,6 +59,7 @@ void gui::resetGui() {
     player2SliderPos(0.5);
 }
 
+// Method to tell TouchOSC that the ball is being held
 void gui::holdBall() {
     ofxOscMessage m;
     m.setAddress( "/1/Release" );
@@ -61,6 +67,7 @@ void gui::holdBall() {
     sender->sendMessage( m );
 }
 
+// Method to tell TouchOSC that the ball has been released
 void gui::releaseBall() {
     ofxOscMessage m;
     m.setAddress( "/1/Release" );
@@ -68,6 +75,7 @@ void gui::releaseBall() {
     sender->sendMessage( m );
 }
 
+// Method to update the slider for player 1
 void gui::player1SliderPos(float newPos) {
     // Package and send the new position for player 1 slider
     ofxOscMessage m;
@@ -76,14 +84,11 @@ void gui::player1SliderPos(float newPos) {
     sender->sendMessage( m );
 }
 
+// Method to update the slider for player 2
 void gui::player2SliderPos(float newPos) {
-    // Package and send the new position for player 1 slider
+    // Package and send the new position for player 2 slider
     ofxOscMessage m;
     m.setAddress( "/1/fader8" );
     m.addFloatArg( newPos );
     sender->sendMessage( m );
-}
-
-bool gui::startGame() {
-    
 }
