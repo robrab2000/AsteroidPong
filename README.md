@@ -14,7 +14,7 @@ You will need to upload the custom layout (found in the `TouchOSC_Layout` folder
 
 On the device you will need to go to the layouts screen and tap 'add'. If your computer does not automatically show up in the list then you will just ned to manually add your computer's local network ip address which can be found by typing 'ifconfig' into terminal and hunting around for the ip address. (I had to do this each time). 
 
-Once the layout has been loaded and selected, just start the game on the computer and then move either the *right hand slider to start a single player game*, or the *left hand slider to start a two player game*.
+Once the layout has been loaded and selected, just start the game on the computer and then move either the **right hand slider** to start a **single player game**, or the **left hand slider** to start a **two player game**.
 
 **Summary:**
 * Install ToucchOSC on a device
