@@ -8,7 +8,7 @@ produced by: Rob Homewood
 
 In order to play this game you will need an mobile device running TouchOSC (available here: [https://hexler.net/software/touchosc](https://hexler.net/software/touchosc)) 
 
-You will need to upload the custom layout (found in the TouchOSC_Layout folder of the repo) into your copy of TouchOSC. In order to do this you will need the TouchOSC Editor (available from the same website as above, in the 'Downloads' section). From the editor you will need to open the layout file and then click the 'sync' button to upload it to your device. 
+You will need to upload the custom layout (found in the 'TouchOSC_Layout' folder of the repo) into your copy of TouchOSC. In order to do this you will need the TouchOSC Editor (available from the same website as above, just scroll down to the 'Downloads' section). From the editor you will need to open the layout file and then click the 'sync' button to upload it to your device. 
 
 On the device you will need to go to the layouts screen and tap 'add' if your computer does not automatically show up in the list then you will just ned to manually add your computer's local network ip address which can be found by typing 'ifconfig' into terminal and hunting around for the ip address. (I had to do this each time). 
 
