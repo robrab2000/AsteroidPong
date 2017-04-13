@@ -25,7 +25,8 @@ void Asteroid::update() {
 void Asteroid::draw() {
     ofPushMatrix();
     ofSetColor(myColor);
-    ofDrawCircle(position.x, position.y, dim);
+    ofTranslate(position.x, position.y);
+    ofDrawCircle(0, 0, dim);
     ofPopMatrix();
 }
 

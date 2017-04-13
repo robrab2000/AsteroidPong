@@ -61,8 +61,12 @@ void Ball::update(){
 
 void Ball::draw(){
     ofSetColor(color);
-    ofDrawCircle(x, y, dim);
+    ofPushMatrix();
+    ofSetCircleResolution(50);
+    ofTranslate(x, y);
+    ofDrawCircle(0, 0, dim);
     //ofDrawRectangle(x, y, dim, dim);
+    ofPopMatrix();
 }
 
 // Method to check for collision with the paddle
