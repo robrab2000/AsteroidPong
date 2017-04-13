@@ -1,5 +1,9 @@
 # asteroidPong!
 
+It does just what it says on the tin.. it's asteroidPong! combining some of the funnest aspects of those classic 70's arcade >>>SMASH HITS<<< Asteroids and Pong!
+
+produced by: Rob Homewood
+
 ## Concept
 
 The idea was to take two classic games that are fun, deconstruct them, and by combining them, see if I could increase how fun they are.
