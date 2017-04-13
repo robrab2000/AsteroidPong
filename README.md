@@ -4,6 +4,18 @@ It does just what it says on the tin.. it's asteroidPong! combining some of the 
 
 produced by: Rob Homewood
 
+## Instructions
+
+In order to play this game you will need an mobile device running TouchOSC (available here: [https://hexler.net/software/touchosc](https://hexler.net/software/touchosc)) 
+
+You will need to upload the custom layout (found in the TouchOSC_Layout folder of the repo) into your copy of TouchOSC. In order to do this you will need the TouchOSC Editor (available from the same website as above, in the 'Downloads' section). From the editor you will need to open the layout file and then click the 'sync' button to upload it to your device. 
+
+On the device you will need to go to the layouts screen and tap 'add' if your computer does not automatically show up in the list then you will just ned to manually add your computer's local network ip address which can be found by typing 'ifconfig' into terminal and hunting around for the ip address. (I had to do this each time). 
+
+Once the layout has been loaded and selected, just start the game on the computer and then move either the right hand slider to start a single player game, or the left hand slider to start a two player game.
+
+Enjoy! 
+
 ## Concept
 
 The idea was to take two classic games that are fun, deconstruct them, and by combining them, see if I could increase how fun they are.
