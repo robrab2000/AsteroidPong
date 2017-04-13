@@ -1,8 +1,9 @@
 # asteroidPong!
 
-It does just what it says on the tin.. it's asteroidPong! combining some of the funnest aspects of those classic 70's arcade >>>SMASH HITS<<< Asteroids and Pong!
+It does just what it says on the tin.. it's **asteroidPong!** 
+Just as you might expect, it combines some of the funnest aspects of those classic 70's arcade >>>SMASH HITS<<< Asteroids and Pong!
 
-produced by: Rob Homewood
+produced by: *Rob Homewood*
 
 ## Instructions
 
