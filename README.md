@@ -16,6 +16,14 @@ On the device you will need to go to the layouts screen and tap 'add'. If your c
 
 Once the layout has been loaded and selected, just start the game on the computer and then move either the right hand slider to start a single player game, or the left hand slider to start a two player game.
 
+Summary:
+* Install ToucchOSC on a device
+* Install TouchOSC on your computer
+* Transfer the layout file to the device
+* Start the application and TouchOSC on the device
+* Move the **Right Slider** to start a **single player game**
+* Move the **Left slider** to start a **two player game**
+
 Enjoy! 
 
 ## Concept
