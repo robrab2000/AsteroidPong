@@ -13,6 +13,7 @@
 #define DIM1 7;
 #define DIM2 15;
 #define DIM3 25;
+#define DIM4 35;
 
 #include <stdio.h>
 #include "ofMain.h"
@@ -31,6 +32,7 @@ public:
     float level;
     float rotator;
     float rotateRate;
+    float resolution;
     
     float dim1, dim2, dim3;
     

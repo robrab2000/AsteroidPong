@@ -43,7 +43,7 @@ void AsteroidManager::spawnAsteroids() {
     // Random as way of a really shitty timer
     if (ofRandom(1000) > 990) {
         // Spawn an asteroid at random valid location
-        createAsteroid(randomAsteroidPosition(), ofVec2f(0,0), 3);
+        createAsteroid(randomAsteroidPosition(), ofVec2f(0,0), (int)ofRandom(2, 5));
     }
 }
 

@@ -20,6 +20,8 @@ void Asteroid::setup(ofVec2f _position, ofVec2f _velocity, int _level) {
     rotator = ofRandom(360);
     // Set rotation rate
     rotateRate = ofRandom(-1, 1);
+    // Set a resolution for this asteroid
+    resolution = (int)ofRandom(5, 5);
 }
 
 // Method to update the asteroid
@@ -34,7 +36,7 @@ void Asteroid::draw() {
         // Set the colour of the asteroid
         ofSetColor(myColor);
         // Set the resolution of the circle
-        ofSetCircleResolution(5);
+        ofSetCircleResolution(resolution);
         // Move the position of the canvas
         ofTranslate(position.x, position.y);
         //Rotate the canvas
@@ -52,6 +54,9 @@ void Asteroid::draw() {
 void Asteroid::setSize(int size) {
     level = size;
     switch(size) {
+        case 4:
+            dim = DIM4;
+            break;
         case 3:
             dim = DIM3;
             break;
