@@ -31,11 +31,11 @@ void ScoreManager::addScore(int playerNumber, int score) {
     // If we are increasing player 1's score
     if (playerNumber == 1) {
         // Increase the score
-        player1Score += score;
+        player1Score += score * GENERAL_MULTIPLIER;
     }
     // If we are increasing player 1's score
     else if (playerNumber == 2) {
         // Increase the score
-        player2Score += score;
+        player2Score += score * GENERAL_MULTIPLIER;
     }
 }
