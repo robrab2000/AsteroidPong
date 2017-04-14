@@ -39,14 +39,48 @@ void Asteroid::draw() {
         ofSetCircleResolution(resolution);
         // Move the position of the canvas
         ofTranslate(position.x, position.y);
+        ofPushMatrix();
+            // Create a modifier based on velocity to adjust the opacity
+            float opacityMod = ofMap(abs(velocity.x) + abs(velocity.y), 0, 20, 0, 1);
+            // Draw the straight trails
+            // Set opacity and draw a trail
+            ofSetColor(myColor.r, myColor.g, myColor.b, 15 * opacityMod);
+            ofDrawLine(0, 0, -velocity.x * 10, -velocity.y * 10);
+            // Set opacity and draw a trail
+            ofSetColor(myColor.r, myColor.g, myColor.b, 25 * opacityMod);
+            ofDrawLine(0, 0, -velocity.x * 9, -velocity.y * 9);
+            // Set opacity and draw a trail
+            ofSetColor(myColor.r, myColor.g, myColor.b, 25 * opacityMod);
+            ofDrawLine(0, 0, -velocity.x * 8, -velocity.y * 8);
+    
+            // Draw the angled trails
+            // Set opacity and draw a trail
+            ofSetColor(myColor.r, myColor.g, myColor.b, 50 * opacityMod);
+            ofDrawLine(0, dim * 0.75, -velocity.x * 7, -velocity.y * 7);
+            // Set opacity and draw a trail
+            ofSetColor(myColor.r, myColor.g, myColor.b, 50 * opacityMod);
+            ofDrawLine(0, dim * 0.75, -velocity.x * 3.5, -velocity.y * 3.5);
+            // Set opacity and draw a trail
+            ofSetColor(myColor.r, myColor.g, myColor.b, 50 * opacityMod);
+            ofDrawLine(0, dim * -0.75, -velocity.x * 7, -velocity.y * 7);
+            // Set opacity and draw a trail
+            ofSetColor(myColor.r, myColor.g, myColor.b, 50 * opacityMod);
+            ofDrawLine(0, dim * -0.75, -velocity.x * 3.5, -velocity.y * 3.5);
+        ofPopMatrix();
+        // Reset opacity
+        ofSetColor(myColor);
         //Rotate the canvas
         ofRotate(rotator);
         // Set to No Fill
         ofNoFill();
         // Draw the actual asteroid
         ofDrawCircle(0, 0, dim);
+        // Set colour to black
+        ofSetColor(0, 0, 0);
         // Set to Fill again
         ofFill();
+        // Draw the actual asteroid
+        ofDrawCircle(0, 0, dim - 1);
     ofPopMatrix();
 }
 
