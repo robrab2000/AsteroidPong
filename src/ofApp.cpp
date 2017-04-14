@@ -35,6 +35,8 @@ void ofApp::setup(){
     soundManager.setup(true);
     // Initialize the asteroid Manager
     asteroidManager.setup(&player1, &player2, &ball, &soundManager, &scoreManager);
+    // Initialize global access singleton
+//    globalAccess.setup();
 }
 
 //--------------------------------------------------------------

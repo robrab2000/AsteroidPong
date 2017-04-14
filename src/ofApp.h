@@ -9,6 +9,7 @@
 #include "gui.h"
 #include "SoundManager.h"
 #include "AsteroidManager.h"
+#include "GlobalAccess.h"
 
 
 // listen on port 12345
@@ -55,5 +56,6 @@ class ofApp : public ofBaseApp{
     gui gui;
     SoundManager soundManager;
     AsteroidManager asteroidManager;
+//    GlobalAccess globalAccess;
     
 };

@@ -48,7 +48,7 @@ void Paddle::draw() {
         // Set the colour
         ofSetColor(myColor);
         // Draw the actual paddle at location
-        ofTranslate(posX, posY);
+    ofTranslate(posX, posY);
         ofDrawRectangle(0, 0, sizeX, sizeY);
     ofPopMatrix();
 }

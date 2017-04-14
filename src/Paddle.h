@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "GlobalAccess.h"
 
 class Paddle {
 public:
