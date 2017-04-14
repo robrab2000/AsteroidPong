@@ -20,6 +20,7 @@ public:
     void calcPos();
     void checkBounds();
     void takeInput(float);
+    void setPositionX();
     
     int playerNumber;
     int posX, posY;

@@ -29,6 +29,8 @@ public:
     ofVec2f velocity;
     float dim;
     float level;
+    float rotator;
+    float rotateRate;
     
     float dim1, dim2, dim3;
     

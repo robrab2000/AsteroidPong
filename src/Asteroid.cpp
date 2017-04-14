@@ -16,6 +16,10 @@ void Asteroid::setup(ofVec2f _position, ofVec2f _velocity, int _level) {
     setSize(_level);
     // Set a color for the asteroid
     myColor = ofColor(255, 255, 255);
+    // Set initial rotate position
+    rotator = ofRandom(360);
+    // Set rotation rate
+    rotateRate = ofRandom(-1, 1);
 }
 
 // Method to update the asteroid
@@ -33,7 +37,9 @@ void Asteroid::draw() {
         ofSetCircleResolution(5);
         // Move the position of the canvas
         ofTranslate(position.x, position.y);
-        // Set to No Fill 
+        //Rotate the canvas
+        ofRotate(rotator);
+        // Set to No Fill
         ofNoFill();
         // Draw the actual asteroid
         ofDrawCircle(0, 0, dim);
@@ -60,5 +66,8 @@ void Asteroid::setSize(int size) {
 
 // Method to calculate the movement of the asteroid
 void Asteroid::calcPos() {
+    // Calculate the position based on velocity
     position += velocity;
+    // Calculate the rotation
+    rotator += rotateRate * velocity.x;
 }
