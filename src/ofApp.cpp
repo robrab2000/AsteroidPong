@@ -32,7 +32,7 @@ void ofApp::setup(){
     gui.setup(&scoreManager, &sender);
     gui.resetGui();
     // Initialize sound
-    soundManager.setup(true);
+//    soundManager.setup(true);
     // Initialize the asteroid Manager
     asteroidManager.setup(&player1, &player2, &ball, &soundManager, &scoreManager);
     // Initialize global access singleton

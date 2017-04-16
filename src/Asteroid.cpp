@@ -22,6 +22,14 @@ void Asteroid::setup(ofVec2f _position, ofVec2f _velocity, int _level) {
     rotateRate = ofRandom(-1, 1);
     // Set a resolution for this asteroid
     resolution = (int)ofRandom(5, 5);
+    // Define the shape of the asteroid
+    defineShape(3 * level, dim);
+    // Set the stroke width for the asteroid
+    asteroidShape.setStrokeWidth(1);
+    // Set the stoke color of the asteroid
+    asteroidShape.setStrokeColor(myColor);
+    // Set the fill colour of the asteroid
+    asteroidShape.setFillColor(ofColor(0,0,0));
 }
 
 // Method to update the asteroid
@@ -33,8 +41,6 @@ void Asteroid::update() {
 // Method to draw the asteroid
 void Asteroid::draw() {
     ofPushMatrix();
-        // Set the colour of the asteroid
-        ofSetColor(myColor);
         // Set the resolution of the circle
         ofSetCircleResolution(resolution);
         // Move the position of the canvas
@@ -66,21 +72,14 @@ void Asteroid::draw() {
             // Set opacity and draw a trail
             ofSetColor(myColor.r, myColor.g, myColor.b, 50 * opacityMod);
             ofDrawLine(0, dim * -0.75, -velocity.x * 3.5, -velocity.y * 3.5);
+        // End trail matrix
         ofPopMatrix();
-        // Reset opacity
-        ofSetColor(myColor);
         //Rotate the canvas
         ofRotate(rotator);
-        // Set to No Fill
-        ofNoFill();
         // Draw the actual asteroid
-        ofDrawCircle(0, 0, dim);
-        // Set colour to black
-        ofSetColor(0, 0, 0);
-        // Set to Fill again
-        ofFill();
-        // Draw the actual asteroid
-        ofDrawCircle(0, 0, dim - 1);
+        asteroidShape.draw();
+//        ofDrawCircle(0, 0, dim - 1);
+    
     ofPopMatrix();
 }
 
@@ -109,4 +108,19 @@ void Asteroid::calcPos() {
     position += velocity;
     // Calculate the rotation
     rotator += rotateRate * velocity.x;
+}
+
+// Method to define the shape of the asteroid
+void Asteroid::defineShape(float points, float radius) {
+    double slice = 2 *  PI / points;
+    for (int i = 0; i < points; i++)
+    {
+        double angle = slice * i;
+        int newX = (int)(0 + radius * cos(angle));
+        int newY = (int)(0 + radius * sin(angle));
+        ofPoint p = ofPoint(newX, newY);
+        ofPoint randomP = ofPoint(ofRandom(-dim * 0.25, dim * 0.25), ofRandom(-dim * 0.25, dim * 0.25));
+        asteroidShape.lineTo(p + randomP);
+    }
+    asteroidShape.close(); // close the shape
 }
