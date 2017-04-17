@@ -63,16 +63,19 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    // Draw the net
-    drawNet();
-    // Draw the ball
-    ball.draw();
-    // Draw the asteroids
-    asteroidManager.draw();
-    // Draw the 1st player
-    player1.draw();
-    // Draw the 2nd player
-    player2.draw();
+    // If the game has started
+    if (gameStarted) {
+        // Draw the net
+        drawNet();
+        // Draw the ball
+        ball.draw();
+        // Draw the asteroids
+        asteroidManager.draw();
+        // Draw the 1st player
+        player1.draw();
+        // Draw the 2nd player
+        player2.draw();
+    }
     // Draw the gui
     gui.draw();
 }

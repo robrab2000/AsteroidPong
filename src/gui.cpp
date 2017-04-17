@@ -14,7 +14,8 @@ void gui::setup(ScoreManager* _scoreManager, ofxOscSender* _sender) {
     scoreManager = _scoreManager;
     sender = _sender;
     // Load the font
-    gameFont.loadFont("Silom.ttf", 16);
+    scoreFont.load("Silom.ttf", 16);
+    titleFont.load("Silom.ttf", 48);
     // Set the game to not started
     gameStarted = false;
 }
@@ -26,7 +27,15 @@ void gui::update() {
 
 // Method to draw the gui
 void gui::draw() {
-    drawScore();
+    // If the game has started
+    if (gameStarted) {
+        // Draw the score
+        drawScore();
+    }
+    else {
+        // Draw the title
+        drawTitle();
+    }
 }
 
 // Method to reset the gui
@@ -127,10 +136,22 @@ void gui::player2SliderPos(float newPos) {
 void gui::drawScore() {
     // Push to score text matrix
     ofPushMatrix();
-    // Set the text color to white
-    ofSetColor(255, 255, 255);
-    // Output the player's scores
-    gameFont.drawString("player 2: " + ofToString(scoreManager->player2Score), ofGetWidth() * 0.2, 50);
-    gameFont.drawString("player 1: " + ofToString(scoreManager->player1Score), ofGetWidth() * 0.7, 50 );
+        // Set the text color to white
+        ofSetColor(255, 255, 255);
+        // Output the player's scores
+        scoreFont.drawString("player 2: " + ofToString(scoreManager->player2Score), ofGetWidth() * 0.2, 50);
+        scoreFont.drawString("player 1: " + ofToString(scoreManager->player1Score), ofGetWidth() * 0.7, 50 );
+    ofPopMatrix();
+}
+
+// Method to draw the title
+void gui::drawTitle() {
+    // Push the title matrix
+    ofPushMatrix();
+        // Set the text color to white
+        ofSetColor(249, 251, 51);
+        
+        // Draw the title;
+        titleFont.drawString("asteroidPong!", (ofGetWidth() * 0.5) - 225, ofGetHeight() * 0.5);
     ofPopMatrix();
 }
