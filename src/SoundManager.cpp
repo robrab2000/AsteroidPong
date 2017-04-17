@@ -19,11 +19,16 @@ void SoundManager::setup(bool _audioOn) {
     pingSound.setMultiPlay(true);
     wallSound.setMultiPlay(true);
     explosionSound.setMultiPlay(true);
-    explosionSound.setVolume(0.4);
-    wallSound.setVolume(0.25);
+//    explosionSound.setVolume(0.4);
+//    wallSound.setVolume(0.25);
     releaseBall.setMultiPlay(true);
     music.setLoop(true);
-    music.setVolume(0.4);
+//    music.setVolume(0.4);
+    
+    // Set volumes
+    soundVolume = 1;
+    musicVolume = 0.4;
+    masterVolume = 1;
     
     // Load the sounds
     pongSound.load("pong.mp3");             // sourced from https://www.freesound.org/people/kickhat/sounds/264447/
@@ -40,9 +45,21 @@ void SoundManager::setup(bool _audioOn) {
     playMusic();
 }
 
+// Method to set the volumes
+void SoundManager::setVolumes() {
+    ofLog(OF_LOG_NOTICE, "test");
+    pongSound.setVolume(soundVolume * masterVolume);
+    pingSound.setVolume(soundVolume * masterVolume);
+    wallSound.setVolume(0.25 * soundVolume * masterVolume);
+    explosionSound.setVolume(0.4 * soundVolume * masterVolume);
+    releaseBall.setVolume(soundVolume * masterVolume);
+    music.setVolume(0.4 * musicVolume * masterVolume);
+}
+
 // Method to update the soundManager
 void SoundManager::update() {
-    
+    // Update the audio levels
+    setVolumes();
 }
 
 // Method to play the pong sound
@@ -90,4 +107,19 @@ void SoundManager::playMusic() {
     if (audioOn) {
         music.play();
     }
+}
+
+// Method to toggle the sound
+void SoundManager::toggleSound() {
+    soundVolume *= -1;
+}
+
+// Method to toggle the music
+void SoundManager::toggleMusic() {
+    musicVolume *= -1;
+}
+
+// Method to toggle all audio
+void SoundManager::muteAudio() {
+    masterVolume *= -1;
 }

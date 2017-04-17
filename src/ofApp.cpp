@@ -59,6 +59,8 @@ void ofApp::update(){
         // Update the asteroid Manager
         asteroidManager.update();
     }
+    // update the soundManager
+    soundManager.update();
 }
 
 //--------------------------------------------------------------
@@ -95,6 +97,17 @@ void ofApp::keyPressed(int key){
     }
     if (key == '3') {
         ball.releasePaddle();
+    }
+    
+    // Audio controls
+    if (key == 's') {
+        soundManager.toggleSound();
+    }
+    if (key == 'm') {
+        soundManager.toggleMusic();
+    }
+    if (key == 'a') {
+        soundManager.muteAudio();
     }
 }
 
