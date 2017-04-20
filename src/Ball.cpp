@@ -21,15 +21,15 @@ void Ball::setup(ScoreManager* _scoreManager, Paddle* _player1, Paddle* _player2
     y = ofGetHeight() * 0.5;
     
     // Define starting velocity
-    startingX = 5;
+    startingX = 8;
     if(ofRandom(10) > 5) {
         startingX *= -1;
     }
     startingY = ofRandom(-3, 3);
     
     // Define the terminal velocity for the ball
-    terminalX = 5;
-    terminalY = 5;
+    terminalX = 8;
+    terminalY = 8;
     
     // Define the rate at which the ball slows towards the terminal speed
     speedDampen = 0.99;

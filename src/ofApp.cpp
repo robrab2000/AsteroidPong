@@ -87,13 +87,17 @@ void ofApp::keyPressed(int key){
     // These are just for debuggin purposes
     
     if (key == '1') {
-        twoPlayers = false;
-        gameStarted = true;
+        if (!gameStarted) {
+            twoPlayers = false;
+            startGame();
+        }
     }
     
     if (key == '2') {
-        twoPlayers = true;
-        gameStarted = true;
+        if(!gameStarted){
+            twoPlayers = true;
+            startGame();
+        }
     }
     if (key == '3') {
         ball.releasePaddle();
@@ -200,7 +204,7 @@ void ofApp::checkOSC() {
         if (m.getAddress() == "/1/fader7") {
             player1.takeInput(m.getArgAsFloat(0));
         }
-        // If the message is from player 1's fader
+        // If the message is from player 2's fader
         if (m.getAddress() == "/1/fader8") {
             if(twoPlayers) {
                 player2.takeInput(m.getArgAsFloat(0));
