@@ -16,7 +16,7 @@
 #define RECEIVER_PORT 12345
 // send on port 54321
 #define SENDER_PORT 9999
-#define SENDER_IP "192.168.2.55"
+#define SENDER_IP "10.100.61.18"
 #define NUM_MSG_STRINGS 20
 class ofApp : public ofBaseApp{
 	public:
