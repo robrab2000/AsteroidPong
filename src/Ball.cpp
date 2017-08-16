@@ -150,13 +150,14 @@ void Ball::releasePaddle() {
     if (paddleBallSet) {
         paddleBallSet = false;
     }
-    if (ballPaddle == player1) {
+    if (ballPaddle == player1 && x >= ballPaddle->posX - dim * 1.65 && x <= ballPaddle->posX - dim * 1.45) {
         speedX = -startingX;
         speedY = startingY * ofRandom(-1, 1);
         // Play ball release sound
         soundManager->ballRelease(0.7);
     }
-    else {
+    if (ballPaddle == player2 && x <= ballPaddle->posX + ballPaddle->sizeX + dim * 1.65 && x >= ballPaddle->posX + ballPaddle->sizeX + dim * 1.45) {
+
         speedX = startingX;
         speedY = startingY * ofRandom(-1, 1);
         // Play ball release sound
