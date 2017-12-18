@@ -9,6 +9,8 @@
 #ifndef ScoreManager_h
 #define ScoreManager_h
 
+#define GENERAL_MULTIPLIER 100
+
 #include <stdio.h>
 #include "ofMain.h"
 

@@ -43,7 +43,7 @@ void AsteroidManager::spawnAsteroids() {
     // Random as way of a really shitty timer
     if (ofRandom(1000) > 990) {
         // Spawn an asteroid at random valid location
-        createAsteroid(randomAsteroidPosition(), ofVec2f(0,0), 3);
+        createAsteroid(randomAsteroidPosition(), ofVec2f(0,0), (int)ofRandom(2, 5));
     }
 }
 
@@ -210,13 +210,13 @@ void AsteroidManager::checkForWallCollision(Asteroid* asteroid, int index) {
     // Check if asteroid has gone off map and destroy
     if (asteroid->position.x < 0 - asteroid->dim) {
         // Award some points to player 1
-        scoreManager->addScore(1, 2);
+        scoreManager->addScore(1, asteroid->level);
         // Destroy the asteroid
         Asteroids.erase(Asteroids.begin() + index);
     }
     if (asteroid->position.x > ofGetWidth() + asteroid->dim) {
         // Award some points to player 2
-        scoreManager->addScore(2, 2);
+        scoreManager->addScore(2, asteroid->level);
         // Destroy the asteroid
         Asteroids.erase(Asteroids.begin() + index);
     }

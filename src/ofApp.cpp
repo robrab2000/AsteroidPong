@@ -35,6 +35,8 @@ void ofApp::setup(){
     soundManager.setup(true);
     // Initialize the asteroid Manager
     asteroidManager.setup(&player1, &player2, &ball, &soundManager, &scoreManager);
+    // Initialize global access singleton
+//    globalAccess.setup();
 }
 
 //--------------------------------------------------------------
@@ -57,22 +59,27 @@ void ofApp::update(){
         // Update the asteroid Manager
         asteroidManager.update();
     }
+    // update the soundManager
+    soundManager.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    // Draw the net
-    drawNet();
-    // Draw the ball
-    ball.draw();
-    // Draw the asteroids
-    asteroidManager.draw();
-    // Draw the 1st player
-    player1.draw();
-    // Draw the 2nd player
-    player2.draw();
-    // Draw the score manager
-    scoreManager.draw();
+    // If the game has started
+    if (gameStarted) {
+        // Draw the net
+        drawNet();
+        // Draw the ball
+        ball.draw();
+        // Draw the asteroids
+        asteroidManager.draw();
+        // Draw the 1st player
+        player1.draw();
+        // Draw the 2nd player
+        player2.draw();
+    }
+    // Draw the gui
+    gui.draw();
 }
 
 //--------------------------------------------------------------
@@ -80,16 +87,31 @@ void ofApp::keyPressed(int key){
     // These are just for debuggin purposes
     
     if (key == '1') {
-        twoPlayers = false;
-        gameStarted = true;
+        if (!gameStarted) {
+            twoPlayers = false;
+            startGame();
+        }
     }
     
     if (key == '2') {
-        twoPlayers = true;
-        gameStarted = true;
+        if(!gameStarted){
+            twoPlayers = true;
+            startGame();
+        }
     }
     if (key == '3') {
         ball.releasePaddle();
+    }
+    
+    // Audio controls
+    if (key == 's') {
+        soundManager.toggleSound();
+    }
+    if (key == 'm') {
+        soundManager.toggleMusic();
+    }
+    if (key == 'a') {
+        soundManager.muteAudio();
     }
 }
 
@@ -159,6 +181,10 @@ void ofApp::drawNet(){
 
 //--------------------------------------------------------------
 void ofApp::exit() {
+    // Stop the game
+    gameStarted = false;
+    // Tell the gui that the game has ended
+    gui.gameStarted = false;
     // Resets the gui upon exiting the game
     gui.resetGui();
 }
@@ -177,17 +203,9 @@ void ofApp::checkOSC() {
         // If the message is from player 1's fader
         if (m.getAddress() == "/1/fader7") {
             player1.takeInput(m.getArgAsFloat(0));
-            if (!gameStarted) {
-                twoPlayers = false;
-                gameStarted = true;
-            }
         }
-        // If the message is from player 1's fader
+        // If the message is from player 2's fader
         if (m.getAddress() == "/1/fader8") {
-            if(!gameStarted){
-                twoPlayers = true;
-                gameStarted = true;
-            }
             if(twoPlayers) {
                 player2.takeInput(m.getArgAsFloat(0));
             }
@@ -200,6 +218,21 @@ void ofApp::checkOSC() {
                         ball.releasePaddle();
                     }
                 }
+            }
+        }
+        // Select 1 player game
+        if (m.getAddress() == "/1/push2") {
+            if (!gameStarted) {
+                twoPlayers = false;
+                startGame();
+            }
+        }
+        
+        // Select 2 player game
+        if (m.getAddress() == "/1/push3") {
+            if(!gameStarted){
+                twoPlayers = true;
+                startGame();
             }
         }
     }
@@ -230,6 +263,10 @@ void ofApp::checkOSC() {
 }
 //--------------------------------------------------------------
 void ofApp::startGame() {
+    // Tell the gui that the game is starting
+    gui.gameStarted = true;
+    // Reset the gui
+    gui.resetGui();
     // Start the game
     gameStarted = true;
 }

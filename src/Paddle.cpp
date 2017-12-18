@@ -14,6 +14,12 @@ Paddle::Paddle() {
 
 // Method to initialize the Paddle
 void Paddle::setup(int _playerNumber, ofColor _myColor) {
+    // Assign a colour for the paddle
+    myColor = _myColor;
+    
+    // Assign player number
+    playerNumber = _playerNumber;
+    
     // Define the size that the paddle
     sizeX = 20;
     sizeY = 100;
@@ -21,18 +27,11 @@ void Paddle::setup(int _playerNumber, ofColor _myColor) {
     // Define starting velocity
     velocityY = 0;
     
-    // Assign a colour for the paddle
-    myColor = _myColor;
+    // Set starting Y position to half way up screen
+    posY = (ofGetHeight() * 0.5) + sizeY * 0.5;
     
     // Define which player number this is and position it accordingly
-    playerNumber = _playerNumber;
-    if (playerNumber == 1) {
-        posX = ofGetWidth() - (sizeX * 3);
-    }
-    else if (playerNumber == 2) {
-        posX = sizeX * 2;
-    }
-    posY = (ofGetHeight() * 0.5) + sizeY * 0.5;
+    setPositionX();
 }
 
 // Method to update the paddle
@@ -49,7 +48,7 @@ void Paddle::draw() {
         // Set the colour
         ofSetColor(myColor);
         // Draw the actual paddle at location
-        ofTranslate(posX, posY);
+    ofTranslate(posX, posY);
         ofDrawRectangle(0, 0, sizeX, sizeY);
     ofPopMatrix();
 }
@@ -62,6 +61,9 @@ void Paddle::calcPos() {
     posY = ofLerp(posY, targetY, ofGetLastFrameTime() * 10);
     // Dampen the movement
     velocityY = posYLast -posY;
+    // Recalculate X position in case of window resize
+    setPositionX();
+    
 }
 
 // Check that the paddle is within the screen bounds
@@ -81,4 +83,15 @@ void Paddle::checkBounds() {
 // Method to accept a new input target position
 void Paddle::takeInput(float newInput) {
     targetY = ofMap(ofClamp(newInput, 0.1, 0.9), 0.1, 0.9, ofGetHeight() - sizeY, 0);
+}
+
+// Method to set the X position
+void Paddle::setPositionX() {
+    // Define which player number this is and position it accordingly
+    if (playerNumber == 1) {
+        posX = ofGetWidth() - (sizeX * 3);
+    }
+    else if (playerNumber == 2) {
+        posX = sizeX * 2;
+    }
 }

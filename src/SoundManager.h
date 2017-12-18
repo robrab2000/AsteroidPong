@@ -16,12 +16,16 @@ class SoundManager {
 public:
     void setup(bool);
     void update();
+    void setVolumes();
     void playPong(float);
     void playPing(float);
     void playWall(float);
     void ballRelease(float);
     void playExplosion(float);
     void playMusic();
+    void toggleSound();
+    void toggleMusic();
+    void muteAudio();
     
     ofSoundPlayer pingSound;
     ofSoundPlayer pongSound;
@@ -29,6 +33,8 @@ public:
     ofSoundPlayer releaseBall;
     ofSoundPlayer explosionSound;
     ofSoundPlayer music;
+    
+    float soundVolume, musicVolume, masterVolume;
     
     bool audioOn;
 };

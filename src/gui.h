@@ -24,9 +24,15 @@ public:
     void releaseBall();
     void player1SliderPos(float);
     void player2SliderPos(float);
+    void drawScore();
+    void drawTitle();
     
     ScoreManager* scoreManager;
     ofxOscSender* sender;
+    
+    ofTrueTypeFont scoreFont;
+    ofTrueTypeFont titleFont;
+    bool gameStarted;
 };
 
 #endif /* gui_h */

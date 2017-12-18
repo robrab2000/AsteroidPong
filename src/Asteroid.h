@@ -10,9 +10,10 @@
 #define Asteroid_h
 
 // Set the possible asteroid sizes
-#define DIM1 7;
-#define DIM2 15;
-#define DIM3 25;
+#define DIM1 5;
+#define DIM2 10;
+#define DIM3 20;
+#define DIM4 40;
 
 #include <stdio.h>
 #include "ofMain.h"
@@ -24,15 +25,21 @@ public:
     void draw();
     void setSize(int);
     void calcPos();
+    void defineShape(float, float);
     
     ofVec2f position;
     ofVec2f velocity;
     float dim;
     float level;
+    float rotator;
+    float rotateRate;
+    float resolution;
     
     float dim1, dim2, dim3;
     
     ofColor myColor;
+    
+    ofPath asteroidShape;
 };
 
 #endif /* Asteroid_h */

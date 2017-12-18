@@ -4,9 +4,11 @@ It does just what it says on the tin.. it's **asteroidPong!**
 
 The game combines some of the funnest aspects of those classic 70's arcade >>>SMASH HITS<<< Asteroids and Pong!
 
-produced by: *Rob Homewood*
+produced by: *Robert J Homewood*
 
-## Instructions
+(Made with OpenFrameworks v0.9.4)
+
+## Instructions to Play
 
 In order to play this game you will need an mobile device running TouchOSC (available here: [https://hexler.net/software/touchosc](https://hexler.net/software/touchosc)) 
 

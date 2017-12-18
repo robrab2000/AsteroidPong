@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "GlobalAccess.h"
 
 class Paddle {
 public:
@@ -20,6 +21,7 @@ public:
     void calcPos();
     void checkBounds();
     void takeInput(float);
+    void setPositionX();
     
     int playerNumber;
     int posX, posY;
