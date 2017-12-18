@@ -5,7 +5,8 @@ It does just what it says on the tin.. it's **asteroidPong!**
 The game combines some of the funnest aspects of those classic 70's arcade >>>SMASH HITS<<< Asteroids and Pong!
 
 produced by: *Robert J Homewood*
-(OpenFrameworks v0.9.4)
+
+(Made with OpenFrameworks v0.9.4)
 
 ## Instructions to Play
 
